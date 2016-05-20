@@ -14,6 +14,7 @@ import android.webkit.WebViewClient;
 import com.company.farmerpocket.R;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class WebViewActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class WebViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
+        ButterKnife.bind(this);
         mIntent = this.getIntent();
 
         initWebView();
@@ -70,6 +72,11 @@ public class WebViewActivity extends AppCompatActivity {
     private void initWebView() {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setSupportZoom(true);
+        webSettings.setBuiltInZoomControls(true);//支持缩放
+        webSettings.setDisplayZoomControls(false); //隐藏缩放按钮
+        webSettings.setUseWideViewPort(true);
+        webSettings.setLoadWithOverviewMode(true);
         webView.setWebViewClient(new WebViewClient() {
 
             @Override
