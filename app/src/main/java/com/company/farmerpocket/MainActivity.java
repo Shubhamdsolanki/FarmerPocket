@@ -15,7 +15,8 @@ import com.company.farmerpocket.activity.UserActivity;
 import com.company.farmerpocket.component.slidmenu.SlidingMenu;
 
 public class MainActivity extends TabActivity implements RadioGroup.OnCheckedChangeListener {
-	//底部导航条
+
+    //底部导航条
     private RadioGroup mBottomTab;
     private TabHost mTabHost;
     private SlidingMenu slidingMenu;
