@@ -23,7 +23,8 @@
         <activity android:name=".activity.RecommendActivity" />
         <activity android:name=".activity.GroupActivity" />
         <activity android:name=".activity.ShopActivity" />
-        <activity android:name=".activity.UserActivity"></activity>
+        <activity android:name=".activity.UserActivity" />
+        <activity android:name=".activity.WebViewActivity"></activity>
     </application>
 
 </manifest>
