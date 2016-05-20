@@ -1,0 +1,42 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <!-- 自定义主题样式 -->
+    <style name="MyAppTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="android:windowAnimationStyle">@style/ActivityAnimTheme</item>
+    </style>
+
+    <!-- 自定义activity进入退出动画-->
+    <style name="ActivityAnimTheme" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_alpha_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_alpha_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_alpha_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_alpha_out</item>
+    </style>
+
+    <!-- TabHost样式-->
+    <style name="main_tab_bottom">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@drawable/index_tab_host_selector_text</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@null</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+
+
+</resources>
