@@ -14,6 +14,9 @@ import com.company.farmerpocket.activity.ShopActivity;
 import com.company.farmerpocket.activity.UserActivity;
 import com.company.farmerpocket.component.slidmenu.SlidingMenu;
 
+/**
+ * 首页Activity
+ */
 public class MainActivity extends TabActivity implements RadioGroup.OnCheckedChangeListener {
 
     //底部导航条
