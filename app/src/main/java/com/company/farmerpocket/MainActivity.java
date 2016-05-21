@@ -13,16 +13,20 @@ import com.company.farmerpocket.activity.RecommendActivity;
 import com.company.farmerpocket.activity.ShopActivity;
 import com.company.farmerpocket.activity.UserActivity;
 import com.company.farmerpocket.component.slidmenu.SlidingMenu;
+import com.company.farmerpocket.helper.ToastHelper;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
- * 首页Activity
+ * MainActivity
  */
 public class MainActivity extends TabActivity implements RadioGroup.OnCheckedChangeListener {
 
     //底部导航条
     private RadioGroup mBottomTab;
     private TabHost mTabHost;
-    private SlidingMenu slidingMenu;
+    public static SlidingMenu slidingMenu;
 
     private Intent mIntentPageOne;
     private Intent mIntentPageTwo;
@@ -40,13 +44,55 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        slidingMenu = (SlidingMenu) findViewById(R.id.id_slid_menu_tab);
+        ButterKnife.bind(this);
         mBottomTab = (RadioGroup) findViewById(R.id.slid_main_tab);
+        slidingMenu = (SlidingMenu) findViewById(R.id.id_slid_menu_tab);
+        slidingMenu.setScale(false);//正常侧滑，不缩放
         mBottomTab.setOnCheckedChangeListener(this);
         mTabHost = getTabHost();
         initTabIntent();
         initTabs();
     }
+
+    @OnClick(R.id.slid_menu_item_one)
+    public void slidMenuClick(){
+        ToastHelper.getInstance().showToast("item1");
+    }
+
+    @OnClick(R.id.slid_menu_item_two)
+    public void slidMenuClick2(){
+        ToastHelper.getInstance().showToast("item2");
+    }
+
+    @OnClick(R.id.slid_menu_item_three)
+    public void slidMenuClick3(){
+        ToastHelper.getInstance().showToast("item3");
+    }
+
+    @OnClick(R.id.slid_menu_item_four)
+    public void slidMenuClick4(){
+        ToastHelper.getInstance().showToast("item4");
+    }
+
+
+    @OnClick(R.id.slid_menu_item_five)
+    public void slidMenuClick5(){
+        ToastHelper.getInstance().showToast("item5");
+    }
+
+
+    @OnClick(R.id.slid_menu_item_six)
+    public void slidMenuClick6(){
+        ToastHelper.getInstance().showToast("item6");
+    }
+
+    @OnClick(R.id.slid_menu_item_seven)
+    public void slidMenuClick7(){
+        ToastHelper.getInstance().showToast("item7");
+    }
+
+
+
 
     /**
      * 分发intent

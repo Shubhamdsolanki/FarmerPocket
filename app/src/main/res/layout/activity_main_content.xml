@@ -31,9 +31,9 @@
         <RadioGroup
             android:id="@+id/slid_main_tab"
             android:layout_width="fill_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:layout_gravity="bottom"
-            android:background="#eeeeee"
+            android:background="@color/white"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -41,55 +41,65 @@
                 android:id="@+id/slid_tab_intent1"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:checked="true"
-                android:drawablePadding="@dimen/dimen_4"
                 android:drawableTop="@drawable/index_tabhost_selector_home"
                 android:text="首页" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_cc" />
 
             <RadioButton
                 android:id="@+id/slid_tab_intent2"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:drawablePadding="@dimen/dimen_4"
-                android:drawableTop="@drawable/index_tabhost_selector_message"
+                android:drawableTop="@drawable/index_tabhost_selector_recon"
                 android:text="今日推荐" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_cc" />
 
             <RadioButton
                 android:id="@+id/slid_tab_intent3"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:drawablePadding="@dimen/dimen_4"
-                android:drawableTop="@drawable/index_tabhost_selector_message"
+                android:drawableTop="@drawable/index_tabhost_selector_group"
                 android:text="品牌团购" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_cc" />
 
             <RadioButton
                 android:id="@+id/slid_tab_intent4"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:drawablePadding="@dimen/dimen_4"
-                android:drawableTop="@drawable/index_tabhost_selector_me"
+                android:drawableTop="@drawable/index_tabhost_selector_shop"
                 android:text="积分商城" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_cc" />
 
             <RadioButton
                 android:id="@+id/slid_tab_intent5"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_4"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:drawablePadding="@dimen/dimen_4"
                 android:drawableTop="@drawable/index_tabhost_selector_me"
                 android:text="个人中心" />
 

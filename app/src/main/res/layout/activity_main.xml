@@ -3,7 +3,7 @@
     android:id="@+id/id_slid_menu_tab"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/gray_cc"
+    android:background="@color/slid_menu_grey"
     android:scrollbars="none"
     ghy:rightPadding="100dp">
 

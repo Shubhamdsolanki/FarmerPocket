@@ -193,9 +193,6 @@ public class SlidingMenu extends HorizontalScrollView {
             ViewHelper.setScaleX(mContent, rightScale);
             ViewHelper.setScaleY(mContent, rightScale);
         } else {
-            ViewHelper.setScaleX(mMenu, leftScale);
-            ViewHelper.setScaleY(mMenu, leftScale);
-            ViewHelper.setAlpha(mMenu, 0.6f + 0.4f * (1 - scale));
             ViewHelper.setTranslationX(mMenu, mMenuWidth * scale * 0.6f);
         }
 

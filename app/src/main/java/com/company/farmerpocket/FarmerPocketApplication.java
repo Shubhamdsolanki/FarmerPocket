@@ -7,8 +7,15 @@ import android.app.Application;
  */
 public class FarmerPocketApplication extends Application {
 
+    private static FarmerPocketApplication mInstance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+        mInstance = this;
+    }
+
+    public static FarmerPocketApplication getInstance(){
+        return mInstance;
     }
 }
