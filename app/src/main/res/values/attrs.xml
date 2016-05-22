@@ -1,46 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="LabelView">
-        <attr name="label_distance" format="dimension" />
-        <attr name="label_height" format="dimension"/>
-        <attr name="label_backgroundColor" format="color"/>
-        <attr name="label_text" format="string"/>
-        <attr name="label_textSize" format="dimension" />
-        <attr name="label_textColor" format="color"/>
-        <attr name="label_visual" format="boolean"/>
-        <attr name="label_orientation" format="enum">
-            <enum name="LEFT_TOP" value="1"/>
-            <enum name="RIGHT_TOP" value="2"/>
-            <enum name="LEFT_BOTTOM" value="3"/>
-            <enum name="RIGHT_BOTTOM" value="4"/>
-        </attr>
-    </declare-styleable>
 
+    <!--轮播banner-->
     <declare-styleable name="ConvenientBanner">
         <attr name="canLoop" format="boolean" />
     </declare-styleable>
 
-    <attr name="text_size" format="dimension"/>
-    <attr name="text_select_color" format="color"/>
-    <attr name="text_normal_color" format="color"/>
-    <attr name="item_padding" format="dimension"/>
-    <declare-styleable name="MyTabView">
-        <attr name="text_size"/>
-        <attr name="text_select_color"/>
-        <attr name="text_normal_color"/>
-        <attr name="item_padding"/>
-    </declare-styleable>
-
-    <declare-styleable name="PullZoomView">
-        <attr name="pzv_sensitive" format="float" />
-        <attr name="pzv_isZoomEnable" format="boolean" />
-        <attr name="pzv_isParallax" format="boolean" />
-        <attr name="pzv_zoomTime" format="integer" />
-    </declare-styleable>
-
-    <attr name="rightPadding" format="dimension" />
+    <!-- 侧滑菜单-->
     <declare-styleable name="SlidingMenu">
-        <attr name="rightPadding" />
+        <attr name="mode">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="viewAbove" format="reference" />
+        <attr name="viewBehind" format="reference" />
+        <attr name="behindOffset" format="dimension" />
+        <attr name="behindWidth" format="dimension" />
+        <attr name="behindScrollScale" format="float" />
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+            <enum name="none" value="2" />
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0" />
+            <enum name="fullscreen" value="1" />
+            <enum name="none" value="2" />
+        </attr>
+        <attr name="shadowDrawable" format="reference" />
+        <attr name="shadowWidth" format="dimension" />
+        <attr name="fadeEnabled" format="boolean" />
+        <attr name="fadeDegree" format="float" />
+        <attr name="selectorEnabled" format="boolean" />
+        <attr name="selectorDrawable" format="reference" />
     </declare-styleable>
 
 </resources>

@@ -1,111 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/slid_menu_grey">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
-
-
         <ImageView
-            android:id="@+id/slid_menu_item_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_chaye" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_40"
+            android:src="@mipmap/tab_icon_me_select" />
 
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
-
-
-        <ImageView
-            android:id="@+id/slid_menu_item_two"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_shuiguo" />
+            android:layout_marginBottom="@dimen/dimen_40"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <View
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/icon_login" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/dimen_20"
+                android:src="@mipmap/icon_regist" />
+        </LinearLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
-
-        <ImageView
-            android:id="@+id/slid_menu_item_three"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_nongchan" />
+            android:layout_weight="1">
 
-        <View
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_chaye" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_shuiguo" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_nongchan" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_shuichan" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_jinkoushuiguo" />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_six"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_jinkounongchan" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+                <ImageView
+                    android:id="@+id/slid_menu_item_seven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/slid_menu_item_jinkoushuichan" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_0.5"
+                    android:background="@color/gray_8f" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
-
-
-        <ImageView
-            android:id="@+id/slid_menu_item_four"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_shuichan" />
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <ImageView
+                android:id="@+id/slid_menu_bottom1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/slid_menu_yijian" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_cc" />
 
+            <ImageView
+                android:id="@+id/slid_menu_bottom2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/slid_menu_tianitan" />
 
-        <ImageView
-            android:id="@+id/slid_menu_item_five"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_jinkoushuiguo" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/gray_cc" />
 
+            <ImageView
+                android:id="@+id/slid_menu_bottom3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@mipmap/slid_menu_jifen" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
+        </LinearLayout>
 
-
-        <ImageView
-            android:id="@+id/slid_menu_item_six"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_jinkounongchan" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
-
-        <ImageView
-            android:id="@+id/slid_menu_item_seven"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/slid_menu_item_jinkoushuichan" />
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_0.5"
-            android:background="@color/gray_8f" />
 
     </LinearLayout>
 

@@ -12,7 +12,7 @@ import com.company.farmerpocket.activity.HomeActivity;
 import com.company.farmerpocket.activity.RecommendActivity;
 import com.company.farmerpocket.activity.ShopActivity;
 import com.company.farmerpocket.activity.UserActivity;
-import com.company.farmerpocket.component.slidmenu.SlidingMenu;
+import com.company.farmerpocket.component.slidingmenu.SlidingMenu;
 import com.company.farmerpocket.helper.ToastHelper;
 
 import butterknife.ButterKnife;
@@ -44,14 +44,28 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //初始化侧滑菜单
+        initSlidingMenu();
+        //初始化butterKnife
         ButterKnife.bind(this);
         mBottomTab = (RadioGroup) findViewById(R.id.slid_main_tab);
-        slidingMenu = (SlidingMenu) findViewById(R.id.id_slid_menu_tab);
-        slidingMenu.setScale(false);//正常侧滑，不缩放
         mBottomTab.setOnCheckedChangeListener(this);
         mTabHost = getTabHost();
         initTabIntent();
         initTabs();
+    }
+
+    /**
+     * 初始化侧滑菜单
+     */
+    private void initSlidingMenu() {
+        slidingMenu = new SlidingMenu(this);
+        slidingMenu.setMode(SlidingMenu.LEFT);
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        slidingMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        slidingMenu.setFadeDegree(0.35f);
+        slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
+        slidingMenu.setMenu(R.layout.layout_slid_menu);
     }
 
     @OnClick(R.id.slid_menu_item_one)
@@ -90,8 +104,6 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
     public void slidMenuClick7(){
         ToastHelper.getInstance().showToast("item7");
     }
-
-
 
 
     /**
