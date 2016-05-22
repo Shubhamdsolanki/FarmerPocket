@@ -1,12 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/common_background_grey"
+    android:orientation="vertical"
     tools:context="com.company.farmerpocket.activity.UserActivity">
 
-</RelativeLayout>
+    <include layout="@layout/layout_user_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_user_head"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="@dimen/dimen_20"
+            android:src="@mipmap/tab_icon_me_select" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:layout_weight="1"
+            android:text="营养美食"
+            android:textColor="@color/black_alpha"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="@dimen/dimen_10"
+            android:src="@mipmap/icon_right_arrow" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_view_grey" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:background="@color/common_view_grey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/user_jifen_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_selector_white_gray"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_10">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:src="@drawable/user_icon_selector_jifen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:layout_weight="1"
+                android:text="我的积分"
+                android:textColor="@color/black_alpha"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="@dimen/dimen_5"
+                android:src="@mipmap/icon_right_arrow" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/dimen_10"
+            android:background="@color/common_view_grey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/user_message_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/user_selector_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:src="@drawable/user_icon_selector_message" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"
+                    android:text="我的消息"
+                    android:textColor="@color/black_alpha"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:src="@mipmap/icon_right_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:background="@color/common_view_grey" />
+
+            <LinearLayout
+                android:id="@+id/user_address_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/user_selector_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:src="@drawable/user_icon_selector_address" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"
+                    android:text="收货地址"
+                    android:textColor="@color/black_alpha"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:src="@mipmap/icon_right_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:background="@color/common_view_grey" />
+
+            <LinearLayout
+                android:id="@+id/user_help_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/user_selector_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:src="@drawable/user_icon_selector_help" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"
+                    android:text="帮助中心"
+                    android:textColor="@color/black_alpha"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:src="@mipmap/icon_right_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/dimen_10"
+                android:background="@color/common_view_grey" />
+
+            <LinearLayout
+                android:id="@+id/user_advice_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/user_selector_white_gray"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:src="@drawable/user_icon_selector_advice" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_10"
+                    android:layout_weight="1"
+                    android:text="意见反馈"
+                    android:textColor="@color/black_alpha"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="@dimen/dimen_5"
+                    android:src="@mipmap/icon_right_arrow" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_view_grey" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

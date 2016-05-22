@@ -24,7 +24,8 @@
         <activity android:name=".activity.GroupActivity" />
         <activity android:name=".activity.ShopActivity" />
         <activity android:name=".activity.UserActivity" />
-        <activity android:name=".activity.WebViewActivity"></activity>
+        <activity android:name=".activity.WebViewActivity" />
+        <activity android:name=".activity.SettingActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,9 @@
 package com.company.farmerpocket.activity;
 
 import com.company.farmerpocket.R;
+import com.company.farmerpocket.helper.ToastHelper;
+
+import butterknife.OnClick;
 
 public class UserActivity extends AbsBaseActivity {
 
@@ -17,6 +20,54 @@ public class UserActivity extends AbsBaseActivity {
     @Override
     protected void init() {
 
+    }
+
+    /**
+     * 跳转设置页面
+     */
+    @OnClick(R.id.user_setting)
+    public void userSetting() {
+        startActivity(this, SettingActivity.class);
+    }
+
+    /**
+     * 我的积分点击事件
+     */
+    @OnClick(R.id.user_jifen_layout)
+    public void userClickJifen() {
+        ToastHelper.getInstance().showToast("我的积分");
+    }
+
+    /**
+     * 我的消息点击事件
+     */
+    @OnClick(R.id.user_message_layout)
+    public void userClickMessage() {
+        ToastHelper.getInstance().showToast("我的消息");
+    }
+
+    /**
+     * 收货地址点击事件
+     */
+    @OnClick(R.id.user_address_layout)
+    public void userClickAddress() {
+        ToastHelper.getInstance().showToast("收货地址");
+    }
+
+    /**
+     * 帮助中心点击事件
+     */
+    @OnClick(R.id.user_help_layout)
+    public void userClickHelp() {
+        ToastHelper.getInstance().showToast("帮助中心");
+    }
+
+    /**
+     * 意见反馈点击事件
+     */
+    @OnClick(R.id.user_advice_layout)
+    public void userClickAdvice() {
+        ToastHelper.getInstance().showToast("意见反馈");
     }
 
 }
