@@ -1,11 +1,10 @@
 package com.company.farmerpocket.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.company.farmerpocket.R;
 
-public class GroupActivity extends AppCompatActivity {
+public class GroupActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
