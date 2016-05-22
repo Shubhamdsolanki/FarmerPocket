@@ -1,14 +1,22 @@
 package com.company.farmerpocket.activity;
 
-import android.os.Bundle;
-
 import com.company.farmerpocket.R;
 
-public class ShopActivity extends BaseActivity {
+public class ShopActivity extends AbsBaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop);
+    protected int getLayoutID() {
+        return R.layout.activity_shop;
     }
+
+    @Override
+    protected boolean isOpenToolBar() {
+        return false;
+    }
+
+    @Override
+    protected void init() {
+
+    }
+
 }

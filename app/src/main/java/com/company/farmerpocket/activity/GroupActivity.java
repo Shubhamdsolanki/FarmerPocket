@@ -1,14 +1,21 @@
 package com.company.farmerpocket.activity;
 
-import android.os.Bundle;
-
 import com.company.farmerpocket.R;
 
-public class GroupActivity extends BaseActivity {
+public class GroupActivity extends AbsBaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group);
+    protected int getLayoutID() {
+        return R.layout.activity_group;
+    }
+
+    @Override
+    protected boolean isOpenToolBar() {
+        return false;
+    }
+
+    @Override
+    protected void init() {
+
     }
 }

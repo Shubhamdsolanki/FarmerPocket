@@ -1,7 +1,6 @@
 package com.company.farmerpocket.activity;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,13 +17,14 @@ import com.company.farmerpocket.helper.ToastHelper;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.ButterKnife;
+import butterknife.Bind;
 import butterknife.OnClick;
 
-public class HomeActivity extends BaseActivity {
+public class HomeActivity extends AbsBaseActivity {
 
 
-    private ConvenientBanner banner;
+    @Bind(R.id.convenientBanner)
+    ConvenientBanner banner;
 
     private String[] images = {"http://www.pp3.cn/uploads/allimg/111112/110323M57-5.jpg",
             "http://p4.so.qhimg.com/sdr/1228_768_/t013e442f43954f6ef4.jpg",
@@ -35,13 +35,17 @@ public class HomeActivity extends BaseActivity {
     private List<String> networkImages;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        ButterKnife.bind(this);
+    protected int getLayoutID() {
+        return R.layout.activity_home;
+    }
 
-        banner = (ConvenientBanner) findViewById(R.id.convenientBanner);
+    @Override
+    protected boolean isOpenToolBar() {
+        return false;
+    }
 
+    @Override
+    protected void init() {
         initBanner();
     }
 
