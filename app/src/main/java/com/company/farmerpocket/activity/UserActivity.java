@@ -1,5 +1,8 @@
 package com.company.farmerpocket.activity;
 
+import android.widget.Toast;
+
+import com.company.farmerpocket.MainActivity;
 import com.company.farmerpocket.R;
 import com.company.farmerpocket.helper.ToastHelper;
 
@@ -25,7 +28,6 @@ public class UserActivity extends AbsBaseActivity {
 
     }
 
-
     /**
      * 跳转用户资料页面
      */
@@ -47,7 +49,7 @@ public class UserActivity extends AbsBaseActivity {
      */
     @OnClick(R.id.user_jifen_layout)
     public void userClickJifen() {
-        ToastHelper.getInstance().showToast("我的积分");
+        startActivity(this,JifenActivity.class);
     }
 
     /**
@@ -55,7 +57,7 @@ public class UserActivity extends AbsBaseActivity {
      */
     @OnClick(R.id.user_message_layout)
     public void userClickMessage() {
-        ToastHelper.getInstance().showToast("我的消息");
+        startActivity(this,MessageActivity.class);
     }
 
     /**
@@ -71,7 +73,7 @@ public class UserActivity extends AbsBaseActivity {
      */
     @OnClick(R.id.user_help_layout)
     public void userClickHelp() {
-        ToastHelper.getInstance().showToast("帮助中心");
+        startActivity(this,HelpActivity.class);
     }
 
     /**
@@ -79,7 +81,26 @@ public class UserActivity extends AbsBaseActivity {
      */
     @OnClick(R.id.user_advice_layout)
     public void userClickAdvice() {
-        ToastHelper.getInstance().showToast("意见反馈");
+        startActivity(this,AdviceActivity.class);
+    }
+
+    private long firstClickTime;
+
+    @Override
+    public void onBackPressed() {
+        if (firstClickTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            //退出时先关闭侧滑菜单
+            if (MainActivity.slidingMenu != null) {
+                if (MainActivity.slidingMenu.isMenuShowing()){
+                    MainActivity.slidingMenu.toggle();
+                }else {
+                    Toast.makeText(UserActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+                    firstClickTime = System.currentTimeMillis();
+                }
+            }
+        }
     }
 
 }

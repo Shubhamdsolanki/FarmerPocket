@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.company.farmerpocket.MainActivity;
 import com.company.farmerpocket.R;
@@ -163,6 +164,25 @@ public class HomeActivity extends AbsBaseActivity {
     protected void onPause() {
         super.onPause();
         banner.stopTurning();
+    }
+
+    private long firstClickTime;
+
+    @Override
+    public void onBackPressed() {
+        if (firstClickTime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            //退出时先关闭侧滑菜单
+            if (MainActivity.slidingMenu != null) {
+                if (MainActivity.slidingMenu.isMenuShowing()){
+                    MainActivity.slidingMenu.toggle();
+                }else {
+                    Toast.makeText(HomeActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
+                    firstClickTime = System.currentTimeMillis();
+                }
+            }
+        }
     }
 
 }

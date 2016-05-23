@@ -21,7 +21,7 @@
             android:id="@+id/iv_user_head"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="@dimen/dimen_20"
+            android:layout_marginLeft="@dimen/dimen_10"
             android:src="@mipmap/tab_icon_me_select" />
 
         <TextView
@@ -69,7 +69,6 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="@dimen/dimen_10"
                 android:src="@drawable/user_icon_selector_jifen" />
 
             <TextView
@@ -113,7 +112,6 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/dimen_10"
                     android:src="@drawable/user_icon_selector_message" />
 
                 <TextView
@@ -151,7 +149,6 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/dimen_10"
                     android:src="@drawable/user_icon_selector_address" />
 
                 <TextView
@@ -189,7 +186,6 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/dimen_10"
                     android:src="@drawable/user_icon_selector_help" />
 
                 <TextView
@@ -227,7 +223,6 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/dimen_10"
                     android:src="@drawable/user_icon_selector_advice" />
 
                 <TextView
