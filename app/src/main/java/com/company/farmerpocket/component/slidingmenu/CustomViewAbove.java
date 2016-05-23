@@ -10,7 +10,7 @@ import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.util.AttributeSet;
-import android.util.FloatMath;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.FocusFinder;
 import android.view.KeyEvent;
@@ -20,8 +20,12 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
+import com.company.farmerpocket.R;
+import com.nineoldandroids.view.ViewHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -735,7 +739,7 @@ public class CustomViewAbove extends ViewGroup {
 					final int totalDelta = (int) (x - mInitialMotionX);
 					int nextPage = determineTargetPage(pageOffset, initialVelocity, totalDelta);
 					setCurrentItemInternal(nextPage, true, true, initialVelocity);
-				} else {	
+				} else {
 					setCurrentItemInternal(mCurItem, true, true, initialVelocity);
 				}
 				mActivePointerId = INVALID_POINTER;
@@ -798,6 +802,40 @@ public class CustomViewAbove extends ViewGroup {
 		mScrollX = x;
 		mViewBehind.scrollBehindTo(mContent, x, y);	
 		((SlidingMenu)getParent()).manageLayers(getPercentOpen());
+	}
+
+	/**
+	 * 重写此方法来实现滑动时的缩放动画
+	 * @param l
+	 * @param t
+	 * @param oldl
+     * @param oldt
+     */
+	@Override
+	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+		super.onScrollChanged(l, t, oldl, oldt);
+		float i = getContext().getResources().getDimension(R.dimen.slidingmenu_offset);
+		float mMenuWidth = getScreenWidth(getContext()) - i;
+		float scale = l * 1.0f / mMenuWidth;
+		scale = 1 - (-scale);
+		scale = 0.8f + 0.2f * scale;
+		ViewHelper.setPivotX(mContent, 0);
+		ViewHelper.setPivotY(mContent, mContent.getHeight() / 2);
+		ViewHelper.setScaleX(mContent, scale);
+		ViewHelper.setScaleY(mContent, scale);
+	}
+
+	/**
+	 * 获得屏幕高度
+	 *
+	 * @param context
+	 * @return
+	 */
+	public static int getScreenWidth(Context context) {
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		DisplayMetrics outMetrics = new DisplayMetrics();
+		wm.getDefaultDisplay().getMetrics(outMetrics);
+		return outMetrics.widthPixels;
 	}
 
 	private int determineTargetPage(float pageOffset, int velocity, int deltaX) {

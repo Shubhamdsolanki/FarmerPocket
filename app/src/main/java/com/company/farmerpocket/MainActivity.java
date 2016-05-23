@@ -8,7 +8,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
 
-import com.company.farmerpocket.activity.AdviceActivity;
 import com.company.farmerpocket.activity.CommonGoodsListActivity;
 import com.company.farmerpocket.activity.GroupActivity;
 import com.company.farmerpocket.activity.HomeActivity;
@@ -105,46 +104,6 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
     @OnClick(R.id.slid_menu_item_seven)
     public void slidMenuClick7(){
         closeMenuStartCommonGoodsActivity("进口水产",null);
-    }
-
-    /**
-     * 意见反馈
-     */
-    @OnClick(R.id.slid_menu_bottom1)
-    public void slidBottom1(){
-        closeMenuStartActivity(AdviceActivity.class);
-    }
-
-    /**
-     * 天天食惠
-     */
-    @OnClick(R.id.slid_menu_bottom2)
-    public void slidBottom2(){
-        final Intent intent = new Intent();
-        intent.putExtra("source", INTENT_PAGE_ONE);
-        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dispatchIntent(intent);
-            }
-        },500);
-    }
-
-    /**
-     * 积分商城
-     */
-    @OnClick(R.id.slid_menu_bottom3)
-    public void slidBottom3(){
-        final Intent intent = new Intent();
-        intent.putExtra("source", INTENT_PAGE_FOUR);
-        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dispatchIntent(intent);
-            }
-        },500);
     }
 
     /**

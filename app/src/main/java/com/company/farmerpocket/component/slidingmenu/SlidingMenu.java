@@ -197,7 +197,10 @@ public class SlidingMenu extends RelativeLayout {
 	 */
 	public SlidingMenu(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		
+
+		//这里把背景设置为和侧滑菜单的背景色一致，这样在滑动后颜色一致，有层次感
+		setBackgroundColor(getResources().getColor(R.color.slid_menu_grey));
+
 		LayoutParams behindParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		mViewBehind = new CustomViewBehind(context);
 		addView(mViewBehind, behindParams);
