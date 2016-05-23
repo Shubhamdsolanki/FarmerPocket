@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.SparseArray;
 import android.view.ViewGroup;
 
-import com.ghy.baseapp.adapter.baserecycler.entity.MultiItemEntity;
+import com.company.farmerpocket.adapter.baserecycler.entity.MultiItemEntity;
 
 import java.util.List;
 
