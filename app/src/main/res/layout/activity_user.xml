@@ -10,9 +10,10 @@
     <include layout="@layout/layout_user_toolbar" />
 
     <LinearLayout
+        android:id="@+id/user_data_layout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@color/white"
+        android:background="@drawable/user_selector_white_gray"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 

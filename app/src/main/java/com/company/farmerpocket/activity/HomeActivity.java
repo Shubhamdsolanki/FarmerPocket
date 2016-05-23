@@ -106,6 +106,53 @@ public class HomeActivity extends AbsBaseActivity {
         if (MainActivity.slidingMenu != null) MainActivity.slidingMenu.toggle();
     }
 
+    @OnClick(R.id.icon_home_type_chaye)
+    public void homeType1() {
+        startCommonGoodsActivity("茶叶", null);
+    }
+
+    @OnClick(R.id.icon_home_type_shuiguo)
+    public void homeType2() {
+        startCommonGoodsActivity("水果", null);
+    }
+
+    @OnClick(R.id.icon_home_type_nongchan)
+    public void homeType3() {
+        startCommonGoodsActivity("农产品", null);
+    }
+
+    @OnClick(R.id.icon_home_type_shuichanhaixian)
+    public void homeType4() {
+        startCommonGoodsActivity("水产海鲜", null);
+    }
+
+    @OnClick(R.id.icon_home_type_jinkoushuiguo)
+    public void homeType5() {
+        startCommonGoodsActivity("进口水果", null);
+    }
+
+    @OnClick(R.id.icon_home_type_jinkounongchan)
+    public void homeType6() {
+        startCommonGoodsActivity("进口农产品", null);
+    }
+
+    @OnClick(R.id.icon_home_type_jinkoushuichan)
+    public void homeType7() {
+        startCommonGoodsActivity("进口水产", null);
+    }
+
+    /**
+     * 跳转到商品页面
+     */
+    private void startCommonGoodsActivity(final String title, final String url) {
+        if (title == null && url == null) return;
+        if (url == null) {
+            CommonGoodsListActivity.startCommonGoodsListActivity(HomeActivity.this, title);
+        } else {
+            CommonGoodsListActivity.startCommonGoodsListActivity(HomeActivity.this, title, url);
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

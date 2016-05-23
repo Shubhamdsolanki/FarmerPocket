@@ -5,6 +5,9 @@ import com.company.farmerpocket.helper.ToastHelper;
 
 import butterknife.OnClick;
 
+/**
+ * 个人中心页面
+ */
 public class UserActivity extends AbsBaseActivity {
 
     @Override
@@ -20,6 +23,15 @@ public class UserActivity extends AbsBaseActivity {
     @Override
     protected void init() {
 
+    }
+
+
+    /**
+     * 跳转用户资料页面
+     */
+    @OnClick(R.id.user_data_layout)
+    public void userData(){
+        startActivity(this,UserDataActivity.class);
     }
 
     /**

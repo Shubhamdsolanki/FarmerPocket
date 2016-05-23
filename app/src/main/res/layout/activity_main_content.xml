@@ -41,7 +41,7 @@
                 android:id="@+id/slid_tab_intent1"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
                 android:checked="true"
                 android:drawableTop="@drawable/index_tabhost_selector_home"
@@ -56,7 +56,7 @@
                 android:id="@+id/slid_tab_intent2"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/index_tabhost_selector_recon"
                 android:text="今日推荐" />
@@ -70,7 +70,7 @@
                 android:id="@+id/slid_tab_intent3"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/index_tabhost_selector_group"
                 android:text="品牌团购" />
@@ -84,7 +84,7 @@
                 android:id="@+id/slid_tab_intent4"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/index_tabhost_selector_shop"
                 android:text="积分商城" />
@@ -98,7 +98,7 @@
                 android:id="@+id/slid_tab_intent5"
                 style="@style/main_tab_bottom"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="44dp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/index_tabhost_selector_me"
                 android:text="个人中心" />

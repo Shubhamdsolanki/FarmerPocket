@@ -3,17 +3,18 @@ package com.company.farmerpocket;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TabHost;
 
+import com.company.farmerpocket.activity.CommonGoodsListActivity;
 import com.company.farmerpocket.activity.GroupActivity;
 import com.company.farmerpocket.activity.HomeActivity;
 import com.company.farmerpocket.activity.RecommendActivity;
 import com.company.farmerpocket.activity.ShopActivity;
 import com.company.farmerpocket.activity.UserActivity;
 import com.company.farmerpocket.component.slidingmenu.SlidingMenu;
-import com.company.farmerpocket.helper.ToastHelper;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -70,41 +71,72 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
 
     @OnClick(R.id.slid_menu_item_one)
     public void slidMenuClick(){
-        ToastHelper.getInstance().showToast("item1");
+        closeMenuStartCommonGoodsActivity("茶叶",null);
     }
 
     @OnClick(R.id.slid_menu_item_two)
     public void slidMenuClick2(){
-        ToastHelper.getInstance().showToast("item2");
+        closeMenuStartCommonGoodsActivity("水果",null);
     }
 
     @OnClick(R.id.slid_menu_item_three)
     public void slidMenuClick3(){
-        ToastHelper.getInstance().showToast("item3");
+        closeMenuStartCommonGoodsActivity("农产品",null);
     }
 
     @OnClick(R.id.slid_menu_item_four)
     public void slidMenuClick4(){
-        ToastHelper.getInstance().showToast("item4");
+        closeMenuStartCommonGoodsActivity("水产海鲜",null);
     }
 
 
     @OnClick(R.id.slid_menu_item_five)
     public void slidMenuClick5(){
-        ToastHelper.getInstance().showToast("item5");
+        closeMenuStartCommonGoodsActivity("进口水果",null);
     }
 
 
     @OnClick(R.id.slid_menu_item_six)
     public void slidMenuClick6(){
-        ToastHelper.getInstance().showToast("item6");
+        closeMenuStartCommonGoodsActivity("进口农产品",null);
     }
 
     @OnClick(R.id.slid_menu_item_seven)
     public void slidMenuClick7(){
-        ToastHelper.getInstance().showToast("item7");
+        closeMenuStartCommonGoodsActivity("进口水产",null);
     }
 
+    /**
+     * 跳转页面并关闭侧滑菜单
+     */
+    private void closeMenuStartActivity(final Class<?> activity){
+        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this,activity);
+                startActivity(intent);
+            }
+        },500);
+    }
+
+    /**
+     * 跳转到商品页面并关闭侧滑菜单
+     */
+    private void closeMenuStartCommonGoodsActivity(final String title, final String url){
+        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
+        if (title == null && url == null) return;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (url == null){
+                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
+                }else {
+                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
+                }
+            }
+        },500);
+    }
 
     /**
      * 分发intent

@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +26,9 @@
         <activity android:name=".activity.ShopActivity" />
         <activity android:name=".activity.UserActivity" />
         <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".activity.SettingActivity"></activity>
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.UserDataActivity" />
+        <activity android:name=".activity.CommonGoodsListActivity"></activity>
     </application>
 
 </manifest>

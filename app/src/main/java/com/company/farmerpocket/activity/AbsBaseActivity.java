@@ -78,6 +78,14 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         return "";
     }
 
+    /**
+     * 设置toolbar标题
+     *
+     * @return
+     */
+    public void setToolBarTitle(String title) {
+        mPageTitle.setText(title);
+    }
 
     /**
      * 设置toolBar右侧图片
@@ -119,10 +127,12 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     /**
      * 初始化自定义的ToolBar
      */
+    private TextView mPageTitle;//页面标题
+
     private void initToolBar() {
         toolbarLayout = (RelativeLayout) findViewById(R.id.base_toolbar);
         ImageView backImage = (ImageView) findViewById(R.id.iv_toolbar_back);
-        TextView title = (TextView) findViewById(R.id.tv_toolbar_title);
+        mPageTitle = (TextView) findViewById(R.id.tv_toolbar_title);
         ImageView rightImage = (ImageView) findViewById(R.id.iv_toolbar_right);
         if (backImage != null)
             backImage.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +141,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
                     AbsBaseActivity.this.finish();
                 }
             });
-        if (title != null) title.setText(setToolBarTitle());
+        if (mPageTitle != null) mPageTitle.setText(setToolBarTitle());
         if (rightImage != null) {
             if (setToolBarRightIv() != 0) {
                 rightImage.setVisibility(View.VISIBLE);
