@@ -21,6 +21,7 @@ public class PullableRecyclerView extends RecyclerView implements Pullable {
 
     @Override
     public boolean canPullDown() {
+        if (getLayoutManager() == null) return false;
         //得到当前显示的最后一个item的view
         View firstChildView = getLayoutManager().getChildAt(0);
         //得到firstChildView的top坐标值
@@ -40,6 +41,7 @@ public class PullableRecyclerView extends RecyclerView implements Pullable {
 
     @Override
     public boolean canPullUp() {
+        if (getLayoutManager() == null) return false;
         //得到当前显示的最后一个item的view
         View lastChildView = getLayoutManager().getChildAt(getLayoutManager().getChildCount() - 1);
         //得到lastChildView的bottom坐标值

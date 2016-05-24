@@ -14,7 +14,6 @@ import com.company.farmerpocket.adapter.HomeGridAdapter;
 import com.company.farmerpocket.api.RetrofitHelper;
 import com.company.farmerpocket.api.interfaces.ApiHome;
 import com.company.farmerpocket.bean.HomeBean;
-import com.company.farmerpocket.common.log.Log;
 import com.company.farmerpocket.component.banner.ConvenientBanner;
 import com.company.farmerpocket.component.banner.holder.CBViewHolderCreator;
 import com.company.farmerpocket.component.banner.holder.Holder;
@@ -52,12 +51,23 @@ public class HomeActivity extends AbsBaseActivity {
     private ConvenientBanner mBanner;
 
     /**
+     * 是否是首次进入请求数据
+     */
+    private boolean isFirstRequest = true;
+
+    /**
      * 首页GridView
      */
     private GridView mGridView;
 
     private List<String> networkImages = new ArrayList<>();
     private List<String> networkImagesUrl = new ArrayList<>();
+
+    /**
+     * 商品类别，用于获取id
+     */
+    private List<HomeBean.DataEntity.ClassEntity> shopType = new ArrayList<>();
+    private String[] typeId = new String[10];
 
     @Override
     protected int getLayoutID() {
@@ -112,14 +122,17 @@ public class HomeActivity extends AbsBaseActivity {
                 .subscribe(new Subscriber<HomeBean>() {
                     @Override
                     public void onCompleted() {
-                        Log.i("home----", "RequestCompleted!");
                         //数据加载成功。关闭下拉刷新
                         mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.SUCCEED);
+                        isFirstRequest = false;
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         ToastHelper.getInstance().showToast("请求数据失败");
+                        //数据加载失败，关闭下拉刷新，过滤首次加载
+                        if (!isFirstRequest) mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
+                        isFirstRequest = false;
                     }
 
                     @Override
@@ -132,11 +145,25 @@ public class HomeActivity extends AbsBaseActivity {
                         }
                         //加载banner数据
                         initBanner();
+                        //商品类别id
+                        initTypeId(homeBean);
                         //加载首页数据
                         List<HomeBean.DataEntity.ShopEntity> listShop = homeBean.getData().getShop();
                         setAdapter(listShop);
                     }
                 });
+    }
+
+    /**
+     * 获取商品类别的id
+     * @param homeBean
+     */
+    private void initTypeId(HomeBean homeBean) {
+        shopType = homeBean.getData().getClassX();
+        if (shopType.size()>10) return;
+        for (int i=0;i<shopType.size();i++){
+            typeId[i]=shopType.get(i).getClassId();
+        }
     }
 
     /**
@@ -193,28 +220,28 @@ public class HomeActivity extends AbsBaseActivity {
     public void homeTypeClick(View view) {
         switch (view.getId()) {
             case R.id.icon_home_type_chaye:
-                startCommonGoodsActivity("茶叶", null);
+                startCommonGoodsActivity("茶叶", typeId[0]);
                 break;
             case R.id.icon_home_type_shuiguo:
-                startCommonGoodsActivity("水果", null);
+                startCommonGoodsActivity("水果", typeId[1]);
                 break;
             case R.id.icon_home_type_nongchan:
-                startCommonGoodsActivity("农产品", null);
+                startCommonGoodsActivity("农产品", typeId[2]);
                 break;
             case R.id.icon_home_type_shuichanhaixian:
-                startCommonGoodsActivity("水产海鲜", null);
+                startCommonGoodsActivity("水产海鲜",typeId[3]);
                 break;
             case R.id.icon_home_type_jinkoushuiguo:
-                startCommonGoodsActivity("进口水果", null);
+                startCommonGoodsActivity("进口水果", typeId[4]);
                 break;
             case R.id.icon_home_type_jinkounongchan:
-                startCommonGoodsActivity("进口农产品", null);
+                startCommonGoodsActivity("进口农产品", typeId[5]);
                 break;
             case R.id.icon_home_type_jinkoushuichan:
-                startCommonGoodsActivity("进口水产", null);
+                startCommonGoodsActivity("进口水产", typeId[6]);
                 break;
             case R.id.icon_home_type_huafei:
-                startCommonGoodsActivity("话费充值", null);
+                startCommonGoodsActivity("话费充值", typeId[7]);
                 break;
         }
     }
@@ -262,12 +289,12 @@ public class HomeActivity extends AbsBaseActivity {
     /**
      * 跳转到商品页面
      */
-    private void startCommonGoodsActivity(final String title, final String url) {
-        if (title == null && url == null) return;
-        if (url == null) {
+    private void startCommonGoodsActivity(final String title, final String id) {
+        if (title == null && id == null) return;
+        if (id == null) {
             CommonGoodsListActivity.startCommonGoodsListActivity(HomeActivity.this, title);
         } else {
-            CommonGoodsListActivity.startCommonGoodsListActivity(HomeActivity.this, title, url);
+            CommonGoodsListActivity.startCommonGoodsListActivity(HomeActivity.this, title, id);
         }
     }
 
