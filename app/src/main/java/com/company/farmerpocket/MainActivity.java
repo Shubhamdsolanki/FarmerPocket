@@ -71,39 +71,39 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
 
     @OnClick(R.id.slid_menu_item_one)
     public void slidMenuClick(){
-        closeMenuStartCommonGoodsActivity("茶叶",null);
+        closeMenuStartCommonGoodsActivity("茶叶",HomeActivity.typeId[0]);
     }
 
     @OnClick(R.id.slid_menu_item_two)
     public void slidMenuClick2(){
-        closeMenuStartCommonGoodsActivity("水果",null);
+        closeMenuStartCommonGoodsActivity("水果",HomeActivity.typeId[1]);
     }
 
     @OnClick(R.id.slid_menu_item_three)
     public void slidMenuClick3(){
-        closeMenuStartCommonGoodsActivity("农产品",null);
+        closeMenuStartCommonGoodsActivity("农产品",HomeActivity.typeId[2]);
     }
 
     @OnClick(R.id.slid_menu_item_four)
     public void slidMenuClick4(){
-        closeMenuStartCommonGoodsActivity("水产海鲜",null);
+        closeMenuStartCommonGoodsActivity("水产海鲜",HomeActivity.typeId[3]);
     }
 
 
     @OnClick(R.id.slid_menu_item_five)
     public void slidMenuClick5(){
-        closeMenuStartCommonGoodsActivity("进口水果",null);
+        closeMenuStartCommonGoodsActivity("进口水果",HomeActivity.typeId[4]);
     }
 
 
     @OnClick(R.id.slid_menu_item_six)
     public void slidMenuClick6(){
-        closeMenuStartCommonGoodsActivity("进口农产品",null);
+        closeMenuStartCommonGoodsActivity("进口农产品",HomeActivity.typeId[5]);
     }
 
     @OnClick(R.id.slid_menu_item_seven)
     public void slidMenuClick7(){
-        closeMenuStartCommonGoodsActivity("进口水产",null);
+        closeMenuStartCommonGoodsActivity("进口水产",HomeActivity.typeId[6]);
     }
 
     /**

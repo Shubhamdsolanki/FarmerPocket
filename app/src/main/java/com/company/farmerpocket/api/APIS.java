@@ -18,7 +18,7 @@ public class APIS {
      * 需要拼接classId
      * 例如：http://114.215.95.55:9995/index.php?s=App/Index/cate/classId/41
      */
-    public static final String SHOP_TYPE = "index.php?s=App/Index/cate/classId/";
+    public static final String SHOP_TYPE = "index.php?";
 
 
 }

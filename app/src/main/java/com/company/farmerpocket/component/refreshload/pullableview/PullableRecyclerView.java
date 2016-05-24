@@ -25,6 +25,7 @@ public class PullableRecyclerView extends RecyclerView implements Pullable {
         //得到当前显示的最后一个item的view
         View firstChildView = getLayoutManager().getChildAt(0);
         //得到firstChildView的top坐标值
+        if (firstChildView == null) return false;
         int firstChildTop = firstChildView.getTop();
         //得到RecyclerView的顶部坐标减去顶部padding值，也就是显示内容最顶部的坐标
         int recyclerTop = getTop() - getPaddingTop();
@@ -45,6 +46,7 @@ public class PullableRecyclerView extends RecyclerView implements Pullable {
         //得到当前显示的最后一个item的view
         View lastChildView = getLayoutManager().getChildAt(getLayoutManager().getChildCount() - 1);
         //得到lastChildView的bottom坐标值
+        if (lastChildView == null) return false;
         int lastChildBottom = lastChildView.getBottom();
         //得到RecyclerView的底部坐标减去底部padding值，也就是显示内容最底部的坐标
         int recyclerBottom = getBottom() - getPaddingBottom();

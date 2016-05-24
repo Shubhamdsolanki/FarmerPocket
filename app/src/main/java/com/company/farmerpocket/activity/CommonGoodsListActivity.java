@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 
 import com.company.farmerpocket.R;
 import com.company.farmerpocket.adapter.CommonRecyclerAdapter;
+import com.company.farmerpocket.adapter.baserecycler.BaseQuickAdapter;
 import com.company.farmerpocket.api.RetrofitHelper;
 import com.company.farmerpocket.api.interfaces.ApiCommonGoods;
 import com.company.farmerpocket.bean.CommonShopBean;
@@ -103,8 +105,10 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
      * 请求数据
      */
     private void requestAPI() {
+        //服务器接口不规范，需要这样拼
+        String url = "App/Index/cate/classId/";
         ApiCommonGoods commonGoods = RetrofitHelper.getRetrofit().create(ApiCommonGoods.class);
-        Observable<CommonShopBean> observable = commonGoods.getCommonGoodsData(goodsId);
+        Observable<CommonShopBean> observable = commonGoods.getCommonGoodsData(url+goodsId);
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<CommonShopBean>() {
@@ -136,9 +140,17 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
      * 设置adapter
      * @param listGoods
      */
-    private void setAdapter(List<CommonShopBean.DataEntity> listGoods) {
+    private void setAdapter(final List<CommonShopBean.DataEntity> listGoods) {
         CommonRecyclerAdapter adapter = new CommonRecyclerAdapter(this,listGoods);
         recyclerView.setAdapter(adapter);
+        //设置点击事件
+        adapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                WebViewActivity.startWebViewActivity(CommonGoodsListActivity.this,
+                        listGoods.get(position).getShopUrl(),"商品详情");
+            }
+        });
     }
 
     private void initRecyclerView() {

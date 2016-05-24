@@ -67,7 +67,7 @@ public class HomeActivity extends AbsBaseActivity {
      * 商品类别，用于获取id
      */
     private List<HomeBean.DataEntity.ClassEntity> shopType = new ArrayList<>();
-    private String[] typeId = new String[10];
+    public static String[] typeId = new String[10];
 
     @Override
     protected int getLayoutID() {

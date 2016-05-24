@@ -1,3 +1,22 @@
 <resources>
-    <string name="app_name">天天食惠</string>
+    <string name="app_name">农夫口袋</string>
+
+    <string name="pull_to_refresh">下拉刷新</string>
+    <string name="release_to_refresh">释放立即刷新</string>
+    <string name="refreshing">正在刷新...</string>
+    <string name="refresh_succeed">刷新成功</string>
+    <string name="refresh_fail">刷新失败</string>
+    <string name="pull_up_to_load">上拉加载更多</string>
+    <string name="release_to_load">释放立即加载</string>
+    <string name="loading">正在加载...</string>
+    <string name="loading_no_more">没有更多数据了</string>
+    <string name="load_succeed">加载成功</string>
+    <string name="load_fail">加载失败</string>
+
+    <string name="user_farmer_login">天天食惠账号登陆</string>
+    <string name="user_regist">注册</string>
+    <string name="username_login_hint">请输入手机号</string>
+    <string name="username_login_pass_hint">请输入密码</string>
+    <string name="user_login">登陆</string>
+
 </resources>

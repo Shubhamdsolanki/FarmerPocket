@@ -817,7 +817,7 @@ public class CustomViewAbove extends ViewGroup {
 		float i = getContext().getResources().getDimension(R.dimen.slidingmenu_offset);
 		float mMenuWidth = getScreenWidth(getContext()) - i;
 		float scale = l * 1.0f / mMenuWidth;
-		scale = 1 - (-scale);
+		scale = 1.0f - (-scale);
 		scale = 0.8f + 0.2f * scale;
 		ViewHelper.setPivotX(mContent, 0);
 		ViewHelper.setPivotY(mContent, mContent.getHeight() / 2);

@@ -14,6 +14,6 @@ import rx.Observable;
 public interface ApiCommonGoods {
 
     @GET(APIS.SHOP_TYPE)
-    Observable<CommonShopBean> getCommonGoodsData(@Query("/") String id);
+    Observable<CommonShopBean> getCommonGoodsData(@Query("s") String id);
 
 }
