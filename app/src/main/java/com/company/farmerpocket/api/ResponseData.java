@@ -15,8 +15,8 @@ public class ResponseData {
         return point;
     }
 
-    public void setPoint(String desc) {
-        this.point = desc;
+    public void setPoint(String point) {
+        this.point = point;
     }
 
     public int getStatus() {

@@ -6,10 +6,10 @@ package com.company.farmerpocket.api;
  */
 public class APIS {
 
-    public static final String BASE_URL = "http://114.215.95.55:9995/index.php?s=/App/Index/";
+    public static final String BASE_URL = "http://114.215.95.55:9995/";
 
     /**
      * 首页
      */
-    public static final String HOME_PAGE = "qudao/1";
+    public static final String HOME_PAGE = "index.php?s=/App/Index";
 }

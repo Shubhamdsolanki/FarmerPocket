@@ -110,7 +110,7 @@ public abstract class BaseApiAv<T extends Activity, K extends ResponseData> {
                 Log.i("Api == onResponse after parser ==" + k.toString());
                 onSuccess(t, k);
             } else {
-                onError(t, k.status, k.msg+"");
+                onError(t, k.status, k.msg + "");
                 Log.i("Api == onResponse error!");
             }
         } catch (Exception e) {

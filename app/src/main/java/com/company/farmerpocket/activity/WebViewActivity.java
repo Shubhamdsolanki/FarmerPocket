@@ -3,9 +3,6 @@ package com.company.farmerpocket.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -14,9 +11,8 @@ import android.webkit.WebViewClient;
 import com.company.farmerpocket.R;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends AbsBaseActivity {
 
     @Bind(R.id.common_webView)
     WebView webView;
@@ -24,12 +20,15 @@ public class WebViewActivity extends AppCompatActivity {
     private Intent mIntent;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web_view);
-        ButterKnife.bind(this);
-        mIntent = this.getIntent();
+    protected int getLayoutID() {
+        return R.layout.activity_web_view;
+    }
 
+    @Override
+    protected void init() {
+        mIntent = this.getIntent();
+        String title = mIntent.getStringExtra("title");
+        setToolBarTitle(title);
         initWebView();
         loadUrl();
     }
@@ -85,8 +84,8 @@ public class WebViewActivity extends AppCompatActivity {
                     return false;
                 }
                 // 可以打开h5页面的电话、邮件等
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                startActivity(intent);
+//                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+//                startActivity(intent);
                 return true;
             }
 
