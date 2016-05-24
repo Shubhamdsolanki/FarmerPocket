@@ -31,7 +31,7 @@ public class UserActivity extends AbsBaseActivity {
     /**
      * 跳转用户资料页面
      */
-    @OnClick(R.id.user_data_layout)
+    @OnClick(R.id.user_layout_login)
     public void userData(){
         startActivity(this,UserDataActivity.class);
     }

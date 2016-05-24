@@ -124,18 +124,23 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
      * 跳转到商品页面并关闭侧滑菜单
      */
     private void closeMenuStartCommonGoodsActivity(final String title, final String url){
-        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
+//        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
         if (title == null && url == null) return;
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (url == null){
-                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
-                }else {
-                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
-                }
-            }
-        },500);
+        if (url == null){
+            CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
+        }else {
+            CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
+        }
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                if (url == null){
+//                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
+//                }else {
+//                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
+//                }
+//            }
+//        },500);
     }
 
     /**

@@ -107,25 +107,6 @@
                     android:layout_marginTop="@dimen/dimen_20"
                     android:background="@color/common_view_grey" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:background="@color/common_view_grey" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/dimen_10"
-                    android:text="今天"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/common_view_grey" />
-
             </LinearLayout>
 
         </LinearLayout>
