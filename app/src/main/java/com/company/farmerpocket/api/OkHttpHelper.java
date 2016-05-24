@@ -45,11 +45,11 @@ public class OkHttpHelper {
         if (baseApiAv != null && baseApiFg == null) type = 1;
         if (baseApiAv == null && baseApiFg != null) type = 2;
         if (type == 1){
-            url = APIS.BASE_URL_MY + baseApiAv.getApi();
+            url = APIS.BASE_URL + baseApiAv.getApi();
             paramsMap = baseApiAv.getParams();
             requestMethod = baseApiAv.getRequestMethod();
         }else if (type == 2){
-            url = APIS.BASE_URL_MY + baseApiFg.getApi();
+            url = APIS.BASE_URL + baseApiFg.getApi();
             paramsMap = baseApiFg.getParams();
             requestMethod = baseApiFg.getRequestMethod();
         }else {

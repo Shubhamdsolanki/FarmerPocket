@@ -6,13 +6,10 @@ package com.company.farmerpocket.api;
  */
 public class APIS {
 
-    public static final String BASE_URL_MY = "http://wthrcdn.etouch.cn/";
-    public static final String BaseUrl = "http://123.56.129.228:9090/";
-
-    public static final String WEATHER = "weather_mini";
+    public static final String BASE_URL = "http://114.215.95.55:9995/index.php?s=/App/Index/";
 
     /**
-     * 油价
+     * 首页
      */
-    public static final String OIL_PRICE = "api/s/getOilPriceInfo";
+    public static final String HOME_PAGE = "qudao/1";
 }

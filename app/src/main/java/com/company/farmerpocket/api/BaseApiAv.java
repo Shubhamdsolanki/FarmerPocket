@@ -106,7 +106,7 @@ public abstract class BaseApiAv<T extends Activity, K extends ResponseData> {
         Log.i("Api == onResponse before parser ==" + data);
         try {
             K k = new Gson().fromJson(data, getClazz());
-            if (k.desc.equals("OK") && k.status == 1000) {
+            if (k.point.equals("操作成功") && k.status == 1) {
                 Log.i("Api == onResponse after parser ==" + k.toString());
                 onSuccess(t, k);
             } else {

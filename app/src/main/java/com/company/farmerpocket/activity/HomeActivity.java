@@ -1,7 +1,7 @@
 package com.company.farmerpocket.activity;
 
 import android.content.Context;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -12,6 +12,8 @@ import com.company.farmerpocket.component.banner.ConvenientBanner;
 import com.company.farmerpocket.component.banner.holder.CBViewHolderCreator;
 import com.company.farmerpocket.component.banner.holder.Holder;
 import com.company.farmerpocket.component.banner.listener.OnItemClickListener;
+import com.company.farmerpocket.component.refreshload.PullToRefreshLayout;
+import com.company.farmerpocket.component.refreshload.pullableview.PullableScrollViewHome;
 import com.company.farmerpocket.helper.ImageHelper;
 import com.company.farmerpocket.helper.ToastHelper;
 
@@ -24,8 +26,20 @@ import butterknife.OnClick;
 public class HomeActivity extends AbsBaseActivity {
 
 
-    @Bind(R.id.convenientBanner)
-    ConvenientBanner banner;
+    /**
+     * 首页下拉刷新控件
+     */
+    @Bind(R.id.home_refresh_scroll_view)
+    PullToRefreshLayout pullToRefreshLayout;
+    /**
+     * 首页ScrollView
+     */
+    @Bind(R.id.home_refresh_scroll_content_view)
+    PullableScrollViewHome pullableScrollViewHome;
+    /**
+     * 首页banner
+     */
+    private ConvenientBanner banner;
 
     private String[] images = {"http://www.pp3.cn/uploads/allimg/111112/110323M57-5.jpg",
             "http://p4.so.qhimg.com/sdr/1228_768_/t013e442f43954f6ef4.jpg",
@@ -47,7 +61,18 @@ public class HomeActivity extends AbsBaseActivity {
 
     @Override
     protected void init() {
+        //加载内容布局
+        View contentView = LayoutInflater.from(this).inflate(R.layout.activity_home_content,null);
+        pullableScrollViewHome.addView(contentView);
+        //初始化view
+        //注意，后加载进来的内容布局不能使用bufferKnife的注解
+        initView();
+        //初始化banner
         initBanner();
+    }
+
+    private void initView() {
+        banner = (ConvenientBanner) findViewById(R.id.convenientBanner);
     }
 
     private void initBanner() {
@@ -66,10 +91,39 @@ public class HomeActivity extends AbsBaseActivity {
 
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return false;
+    /**
+     * 首页分类按钮点击事件
+     * @param view
+     */
+    public void homeTypeClick(View view){
+        switch (view.getId()){
+            case R.id.icon_home_type_chaye:
+                startCommonGoodsActivity("茶叶", null);
+                break;
+            case R.id.icon_home_type_shuiguo:
+                startCommonGoodsActivity("水果", null);
+                break;
+            case R.id.icon_home_type_nongchan:
+                startCommonGoodsActivity("农产品", null);
+                break;
+            case R.id.icon_home_type_shuichanhaixian:
+                startCommonGoodsActivity("水产海鲜", null);
+                break;
+            case R.id.icon_home_type_jinkoushuiguo:
+                startCommonGoodsActivity("进口水果", null);
+                break;
+            case R.id.icon_home_type_jinkounongchan:
+                startCommonGoodsActivity("进口农产品", null);
+                break;
+            case R.id.icon_home_type_jinkoushuichan:
+                startCommonGoodsActivity("进口水产", null);
+                break;
+            case R.id.icon_home_type_huafei:
+                startCommonGoodsActivity("话费充值", null);
+                break;
+        }
     }
+
 
     /**
      * 网络图片加载例子
@@ -107,41 +161,6 @@ public class HomeActivity extends AbsBaseActivity {
         if (MainActivity.slidingMenu != null) MainActivity.slidingMenu.toggle();
     }
 
-    @OnClick(R.id.icon_home_type_chaye)
-    public void homeType1() {
-        startCommonGoodsActivity("茶叶", null);
-    }
-
-    @OnClick(R.id.icon_home_type_shuiguo)
-    public void homeType2() {
-        startCommonGoodsActivity("水果", null);
-    }
-
-    @OnClick(R.id.icon_home_type_nongchan)
-    public void homeType3() {
-        startCommonGoodsActivity("农产品", null);
-    }
-
-    @OnClick(R.id.icon_home_type_shuichanhaixian)
-    public void homeType4() {
-        startCommonGoodsActivity("水产海鲜", null);
-    }
-
-    @OnClick(R.id.icon_home_type_jinkoushuiguo)
-    public void homeType5() {
-        startCommonGoodsActivity("进口水果", null);
-    }
-
-    @OnClick(R.id.icon_home_type_jinkounongchan)
-    public void homeType6() {
-        startCommonGoodsActivity("进口农产品", null);
-    }
-
-    @OnClick(R.id.icon_home_type_jinkoushuichan)
-    public void homeType7() {
-        startCommonGoodsActivity("进口水产", null);
-    }
-
     /**
      * 跳转到商品页面
      */
@@ -175,9 +194,9 @@ public class HomeActivity extends AbsBaseActivity {
         } else {
             //退出时先关闭侧滑菜单
             if (MainActivity.slidingMenu != null) {
-                if (MainActivity.slidingMenu.isMenuShowing()){
+                if (MainActivity.slidingMenu.isMenuShowing()) {
                     MainActivity.slidingMenu.toggle();
-                }else {
+                } else {
                     Toast.makeText(HomeActivity.this, "再按一次退出应用", Toast.LENGTH_SHORT).show();
                     firstClickTime = System.currentTimeMillis();
                 }
