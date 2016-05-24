@@ -34,4 +34,6 @@
     <color name="gray_cc">#cccccc</color><!--灰色cc -->
     <color name="gray_8f">#8f8f8f</color><!--灰色8f -->
 
+    <color name="gray_e0_line">#e0e0e0</color><!--灰色e0 -->
+    <color name="red">#FF0000</color>
 </resources>
