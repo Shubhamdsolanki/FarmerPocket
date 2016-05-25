@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import com.company.farmerpocket.MainActivity;
 import com.company.farmerpocket.R;
+import com.company.farmerpocket.component.SweetAlert.SweetAlertDialog;
 import com.company.farmerpocket.helper.ToastHelper;
 
 import butterknife.OnClick;
@@ -66,6 +67,10 @@ public class UserActivity extends AbsBaseActivity {
     @OnClick(R.id.user_address_layout)
     public void userClickAddress() {
         ToastHelper.getInstance().showToast("收货地址");
+        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText("Good job!")
+                .setContentText("You clicked the button!")
+                .show();
     }
 
     /**

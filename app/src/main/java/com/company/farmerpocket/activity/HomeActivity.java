@@ -55,6 +55,11 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
     private boolean isFirstRequest = true;
 
     /**
+     * 是否是首次进入首页
+     */
+    private boolean isFirstStart = true;
+
+    /**
      * 首页GridView
      */
     private GridView mGridView;
@@ -321,7 +326,12 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
         mBanner.startTurning(4000);
         //此处设置防止页面切换时scrollView自动滚动到GridView顶部的位置
         //让其滚动到上次离开的位置
-        pullableScrollViewHome.smoothScrollTo(0,scrollY);
+        if (isFirstStart){
+            //首次进入scrollY一定为0，此时不处理
+            isFirstStart = false;
+        }else {
+            pullableScrollViewHome.smoothScrollTo(0,scrollY);
+        }
     }
 
     @Override

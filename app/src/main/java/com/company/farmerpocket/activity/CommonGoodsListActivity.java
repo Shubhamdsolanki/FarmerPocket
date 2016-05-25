@@ -191,4 +191,11 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
         context.startActivity(intent);
     }
 
+    @Override
+    protected void onEmptyClick(View view) {
+        super.onEmptyClick(view);
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        //重新请求
+        requestAPI();
+    }
 }
