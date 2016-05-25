@@ -49,8 +49,18 @@ public class RecommendActivity extends AbsBaseActivity {
     }
 
     @Override
-    protected boolean isOpenToolBar() {
-        return false;
+    protected int setToolBarLeftIv() {
+        return -1;
+    }
+
+    @Override
+    protected String setToolBarTitle() {
+        return "今日推荐";
+    }
+
+    @Override
+    protected int setToolBarRightIv() {
+        return R.mipmap.icon_search;
     }
 
     @Override

@@ -1,11 +1,16 @@
 package com.company.farmerpocket.activity;
 
 import android.content.Context;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.farmerpocket.MainActivity;
@@ -21,12 +26,13 @@ import com.company.farmerpocket.component.banner.listener.OnItemClickListener;
 import com.company.farmerpocket.component.refreshload.PullToRefreshLayout;
 import com.company.farmerpocket.component.refreshload.pullableview.PullableScrollViewHome;
 import com.company.farmerpocket.helper.ImageHelper;
+import com.company.farmerpocket.helper.ToastHelper;
+import com.company.farmerpocket.utils.ImeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -48,6 +54,11 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
      * 首页banner
      */
     private ConvenientBanner mBanner;
+
+    /**
+     * 搜索布局
+     */
+    private LinearLayout searchLayout;
 
     /**
      * 是否是首次进入请求数据
@@ -79,12 +90,24 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
     }
 
     @Override
-    protected boolean isOpenToolBar() {
-        return false;
+    protected int setToolBarLeftIv() {
+        return R.mipmap.icon_menu;
+    }
+
+    @Override
+    protected String setToolBarTitle() {
+        return "农夫口袋";
+    }
+
+    @Override
+    protected int setToolBarRightIv() {
+        return R.mipmap.icon_search;
     }
 
     @Override
     protected void init() {
+        //设置toolbar按钮点击事件
+        setToolBarClickListener();
         //加载内容布局
         View contentView = LayoutInflater.from(this).inflate(R.layout.activity_home_content, null);
         pullableScrollViewHome.addView(contentView);
@@ -95,6 +118,51 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
         requestAPI();
         //设置下拉刷新监听
         setRefreshListener();
+    }
+
+    /**
+     * 设置toolBar点击事件
+     */
+    private void setToolBarClickListener() {
+        setOnToolBarLeftIvClickListener(new ToolBarLeftIvClickListener() {
+            @Override
+            public void onToolBarLeftIvClick() {
+                if (MainActivity.slidingMenu != null) MainActivity.slidingMenu.toggle();
+            }
+        });
+
+        setOnToolBarRightIvClickListener(new ToolBarRightIvClickListener() {
+            @Override
+            public void onToolBarRightIvClick() {
+                setToolBarIsVisibility(View.GONE);
+                searchLayout.setVisibility(View.VISIBLE);
+                TextView tvCancel = (TextView) searchLayout.findViewById(R.id.search_cancel);
+                final EditText editText = (EditText) searchLayout.findViewById(R.id.search_et);
+                ImeUtils.showSoftKeyboard(editText);
+                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+                tvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        searchLayout.setVisibility(View.GONE);
+                        setToolBarIsVisibility(View.VISIBLE);
+                        ImeUtils.hideSoftKeyboard(editText);
+                    }
+                });
+                editText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            ImeUtils.hideSoftKeyboard(editText);
+                            ToastHelper.getInstance().showToast(editText.getText().toString());
+                            editText.setText("");
+                            return true;
+                        }
+                        return false;
+                    }
+
+                });
+            }
+        });
     }
 
     /**
@@ -202,6 +270,8 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
         mGridView = (GridView) findViewById(R.id.grid_view);
         //滑动监听
         pullableScrollViewHome.setOnScrollListener(this);
+        //搜索布局
+        searchLayout = (LinearLayout) findViewById(R.id.base_toolbar_search);
     }
 
     /**
@@ -284,14 +354,6 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
         public void onItemClick(int position) {
 
         }
-    }
-
-    /**
-     * 首页侧滑菜单按钮点击事件
-     */
-    @OnClick(R.id.home_menu)
-    public void homeMeunClick() {
-        if (MainActivity.slidingMenu != null) MainActivity.slidingMenu.toggle();
     }
 
     /**

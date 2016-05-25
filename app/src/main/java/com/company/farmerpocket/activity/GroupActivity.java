@@ -52,8 +52,13 @@ public class GroupActivity extends AbsBaseActivity {
     }
 
     @Override
-    protected boolean isOpenToolBar() {
-        return false;
+    protected int setToolBarLeftIv() {
+        return -1;
+    }
+
+    @Override
+    protected String setToolBarTitle() {
+        return "品牌团";
     }
 
     @Override

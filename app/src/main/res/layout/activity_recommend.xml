@@ -6,8 +6,6 @@
     android:orientation="vertical"
     tools:context="com.company.farmerpocket.activity.RecommendActivity">
 
-    <include layout="@layout/layout_recom_toolbar"/>
-
     <com.company.farmerpocket.component.refreshload.PullToRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recom_refresh_scroll_view"
         android:layout_width="match_parent"
