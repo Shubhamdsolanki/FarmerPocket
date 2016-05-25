@@ -9,6 +9,7 @@ import android.view.View;
 import com.company.farmerpocket.R;
 import com.company.farmerpocket.adapter.CommonRecyclerAdapter;
 import com.company.farmerpocket.adapter.baserecycler.BaseQuickAdapter;
+import com.company.farmerpocket.api.APIS;
 import com.company.farmerpocket.api.RetrofitHelper;
 import com.company.farmerpocket.api.interfaces.ApiCommonGoods;
 import com.company.farmerpocket.bean.CommonShopBean;
@@ -112,8 +113,7 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
      * 请求数据
      */
     private void requestAPI() {
-        //服务器接口不规范，需要这样拼
-        String url = "App/Index/cate/classId/";
+        String url = APIS.HOME_TYPE;
         ApiCommonGoods commonGoods = RetrofitHelper.getRetrofit().create(ApiCommonGoods.class);
         Observable<CommonShopBean> observable = commonGoods.getCommonGoodsData(url+goodsId);
         observable.subscribeOn(Schedulers.io())

@@ -15,7 +15,6 @@ import com.company.farmerpocket.api.interfaces.ApiCommonGoods;
 import com.company.farmerpocket.bean.CommonShopBean;
 import com.company.farmerpocket.component.refreshload.PullToRefreshLayout;
 import com.company.farmerpocket.component.refreshload.pullableview.PullableRecyclerView;
-import com.company.farmerpocket.helper.ToastHelper;
 
 import java.util.List;
 
@@ -108,10 +107,11 @@ public class RecommendActivity extends AbsBaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        ToastHelper.getInstance().showToast("请求数据失败");
                         //数据加载失败，关闭下拉刷新，过滤首次加载
                         if (!isFirstRequest) mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
                         isFirstRequest = false;
+                        //请求失败，设置activity状态为error
+                        if (getActivityStatus() != ACTIVITY_STATUS_ERROR) setActivityStatus(ACTIVITY_STATUS_ERROR);
                     }
 
                     @Override
@@ -160,6 +160,14 @@ public class RecommendActivity extends AbsBaseActivity {
                 }
             }
         }
+    }
+
+    @Override
+    protected void onErrorClick(View view) {
+        super.onErrorClick(view);
+        //重新请求
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        requestAPI();
     }
 
 }

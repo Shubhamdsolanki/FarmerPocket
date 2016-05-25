@@ -2,18 +2,18 @@ package com.company.farmerpocket.api.interfaces;
 
 
 import com.company.farmerpocket.api.APIS;
-import com.company.farmerpocket.bean.CommonShopBean;
+import com.company.farmerpocket.bean.JifenBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
 
 /**
- * 通用商品列表api
+ * 积分商城api
  */
-public interface ApiCommonGoods {
+public interface ApiJifenShop {
 
     @GET(APIS.INDEX)
-    Observable<CommonShopBean> getCommonGoodsData(@Query("s") String url);
+    Observable<JifenBean> getJifenShopData(@Query("s") String url);
 
 }

@@ -21,7 +21,6 @@ import com.company.farmerpocket.component.banner.listener.OnItemClickListener;
 import com.company.farmerpocket.component.refreshload.PullToRefreshLayout;
 import com.company.farmerpocket.component.refreshload.pullableview.PullableScrollViewHome;
 import com.company.farmerpocket.helper.ImageHelper;
-import com.company.farmerpocket.helper.ToastHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class HomeActivity extends AbsBaseActivity {
+public class HomeActivity extends AbsBaseActivity implements PullableScrollViewHome.OnScrollListener{
 
     /**
      * 首页下拉刷新控件
@@ -129,14 +128,17 @@ public class HomeActivity extends AbsBaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        ToastHelper.getInstance().showToast("请求数据失败");
                         //数据加载失败，关闭下拉刷新，过滤首次加载
                         if (!isFirstRequest) mPullToRefreshLayout.refreshFinish(PullToRefreshLayout.FAIL);
                         isFirstRequest = false;
+                        //请求失败，设置activity状态为error
+                        if (getActivityStatus() != ACTIVITY_STATUS_ERROR) setActivityStatus(ACTIVITY_STATUS_ERROR);
                     }
 
                     @Override
                     public void onNext(HomeBean homeBean) {
+                        //设置activity状态为success
+                        if (getActivityStatus() != ACTIVITY_STATUS_SUCCESS) setActivityStatus(ACTIVITY_STATUS_SUCCESS);
                         List bannerList = homeBean.getData().getCarouselImg();
                         networkImages = new ArrayList<>();
                         for (int i = 0; i < bannerList.size(); i++) {
@@ -193,6 +195,8 @@ public class HomeActivity extends AbsBaseActivity {
     private void initView() {
         mBanner = (ConvenientBanner) findViewById(R.id.convenientBanner);
         mGridView = (GridView) findViewById(R.id.grid_view);
+        //滑动监听
+        pullableScrollViewHome.setOnScrollListener(this);
     }
 
     /**
@@ -246,7 +250,6 @@ public class HomeActivity extends AbsBaseActivity {
         }
     }
 
-
     /**
      * banner网络图片加载
      */
@@ -298,10 +301,27 @@ public class HomeActivity extends AbsBaseActivity {
         }
     }
 
+    /**
+     * 获取scrollView滑动到了哪里
+     * @param scrollY
+     */
+    /**
+     * 滑动的位置
+     */
+    private int scrollY = 0;
+
+    @Override
+    public void onScroll(int scrollY) {
+        this.scrollY = scrollY;
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         mBanner.startTurning(4000);
+        //此处设置防止页面切换时scrollView自动滚动到GridView顶部的位置
+        //让其滚动到上次离开的位置
+        pullableScrollViewHome.smoothScrollTo(0,scrollY);
     }
 
     @Override
@@ -329,4 +349,11 @@ public class HomeActivity extends AbsBaseActivity {
         }
     }
 
+    @Override
+    protected void onErrorClick(View view) {
+        super.onErrorClick(view);
+        //重新请求
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        requestAPI();
+    }
 }

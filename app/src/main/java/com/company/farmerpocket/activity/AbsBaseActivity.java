@@ -127,6 +127,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     }
 
     /**
+     * 设置toolBar左侧图片
+     *
+     * @return
+     */
+    protected int setToolBarLeftIv() {
+        return 0;
+    }
+
+    /**
      * 无网络点击事件
      *
      * @param view
@@ -153,6 +162,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
 
     /**
      * 初始化滑动返回布局
+     *
      * @return
      */
     private View getContainer() {
@@ -173,7 +183,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     }
 
     public void setDragEdge(SwipeBackLayout.DragEdge dragEdge) {
-        if(isOpenSwipeBack()) swipeBackLayout.setDragEdge(dragEdge);
+        if (isOpenSwipeBack()) swipeBackLayout.setDragEdge(dragEdge);
     }
 
     public SwipeBackLayout getSwipeBackLayout() {
@@ -190,11 +200,11 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         mRootFrameView = getLayoutInflater().inflate(R.layout.abs_base_activity, null);
         mRootFrameLayout = (FrameLayout) mRootFrameView.findViewById(R.id.abs_base_frame_layout);
         //是否打开手势滑动返回
-        if (isOpenSwipeBack()){
+        if (isOpenSwipeBack()) {
             //设置可手势返回的布局
             super.setContentView(getContainer());
             swipeBackLayout.addView(mRootFrameView);
-        }else {
+        } else {
             //设置布局
             super.setContentView(mRootFrameView);
         }
@@ -225,12 +235,24 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         mPageTitle = (TextView) findViewById(R.id.tv_toolbar_title);
         ImageView rightImage = (ImageView) findViewById(R.id.iv_toolbar_right);
         if (backImage != null)
-            backImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AbsBaseActivity.this.finish();
-                }
-            });
+            if (setToolBarLeftIv() != 0) {
+                //默认是返回，不为0则为自定义
+                backImage.setImageResource(setToolBarLeftIv());
+                backImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (leftIvClickListener != null) leftIvClickListener.onToolBarLeftIvClick();
+                    }
+                });
+            } else {
+                //默认点击事件是返回
+                backImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AbsBaseActivity.this.finish();
+                    }
+                });
+            }
         if (mPageTitle != null) mPageTitle.setText(setToolBarTitle());
         if (rightImage != null) {
             if (setToolBarRightIv() != 0) {
@@ -254,9 +276,10 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
 
     /**
      * 获取activity当前状态信息
+     *
      * @return
      */
-    public int getActivityStatus(){
+    public int getActivityStatus() {
         return ACTIVITY_STATUS;
     }
 
@@ -336,7 +359,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     private class NoNetClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-//            if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
+            if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
             onNoNetClick(v);
         }
     }
@@ -353,7 +376,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     private class EmptyClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-//            if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
+            if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
             onEmptyClick(v);
         }
     }
@@ -370,7 +393,7 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     private class ErrorClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-//            if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
+            if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
             onErrorClick(v);
         }
     }
@@ -398,6 +421,20 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
 
     public interface ToolBarRightIvClickListener {
         void onToolBarRightIvClick();
+    }
+
+    /**
+     * toolBar左侧图片点击监听
+     */
+    private ToolBarLeftIvClickListener leftIvClickListener;
+
+    public void setOnToolBarLeftIvClickListener(ToolBarLeftIvClickListener listener) {
+        leftIvClickListener = listener;
+    }
+
+
+    public interface ToolBarLeftIvClickListener {
+        void onToolBarLeftIvClick();
     }
 
     @Override
