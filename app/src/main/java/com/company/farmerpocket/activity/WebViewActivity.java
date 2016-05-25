@@ -33,6 +33,11 @@ public class WebViewActivity extends AbsBaseActivity {
         loadUrl();
     }
 
+    @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
     /**
      * 根据url加载h5
      */

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.company.farmerpocket.R;
 import com.company.farmerpocket.common.logger.Logger;
+import com.company.farmerpocket.component.swipeback.SwipeBackLayout;
 
 import butterknife.ButterKnife;
 
@@ -42,6 +43,22 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      * 自定义toolbar布局
      */
     private RelativeLayout toolbarLayout;
+
+    /**
+     * 手势滑动关闭
+     */
+    private SwipeBackLayout swipeBackLayout;
+    private ImageView ivShadow;
+
+    /**
+     * 是否打开手势返回
+     * 默认为false
+     *
+     * @return
+     */
+    protected boolean isOpenSwipeBack() {
+        return false;
+    }
 
     /**
      * 获取布局ID
@@ -95,6 +112,35 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 初始化滑动返回布局
+     * @return
+     */
+    private View getContainer() {
+        RelativeLayout container = new RelativeLayout(this);
+        swipeBackLayout = new SwipeBackLayout(this);
+        ivShadow = new ImageView(this);
+        ivShadow.setBackgroundColor(getResources().getColor(R.color.gray_cc));
+        swipeBackLayout.setOnSwipeBackListener(new SwipeBackLayout.SwipeBackListener() {
+            @Override
+            public void onViewPositionChanged(float fractionAnchor, float fractionScreen) {
+                ivShadow.setAlpha(1 - fractionScreen);
+            }
+        });
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        container.addView(ivShadow, params);
+        container.addView(swipeBackLayout);
+        return container;
+    }
+
+    public void setDragEdge(SwipeBackLayout.DragEdge dragEdge) {
+        if(isOpenSwipeBack()) swipeBackLayout.setDragEdge(dragEdge);
+    }
+
+    public SwipeBackLayout getSwipeBackLayout() {
+        return swipeBackLayout;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,8 +150,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         //加载根布局
         mRootFrameView = getLayoutInflater().inflate(R.layout.abs_base_activity, null);
         mRootFrameLayout = (FrameLayout) mRootFrameView.findViewById(R.id.abs_base_frame_layout);
-        //设置布局
-        setContentView(mRootFrameView);
+        //是否打开手势滑动返回
+        if (isOpenSwipeBack()){
+            //设置可手势返回的布局
+            super.setContentView(getContainer());
+            swipeBackLayout.addView(mRootFrameView);
+        }else {
+            //设置布局
+            super.setContentView(mRootFrameView);
+        }
         //加载子类布局
         if (id != NO_LAYOUT) {
             mSonView = getLayoutInflater().inflate(id, null);

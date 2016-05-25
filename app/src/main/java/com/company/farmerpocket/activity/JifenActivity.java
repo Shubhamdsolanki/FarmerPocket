@@ -18,6 +18,11 @@ public class JifenActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
 
     }

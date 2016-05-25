@@ -65,6 +65,11 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
         //设置页面标题
         String pageTitle = getIntent().getStringExtra(PAGE_TITLE);
