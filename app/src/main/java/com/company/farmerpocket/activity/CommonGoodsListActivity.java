@@ -74,6 +74,8 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
         //设置页面标题
         String pageTitle = getIntent().getStringExtra(PAGE_TITLE);
         setToolBarTitle(pageTitle);
+        //设置loading
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
         //获取传递过来的url
         goodsId = getIntent().getStringExtra(SHOP_ID);
         if (goodsId == null) return;
@@ -134,8 +136,11 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
 
                     @Override
                     public void onNext(CommonShopBean commonShopBean) {
+                        //设置activity状态为success
+                        if (getActivityStatus() != ACTIVITY_STATUS_SUCCESS)  setActivityStatus(ACTIVITY_STATUS_SUCCESS);
                         //获取商品信息
                         List<CommonShopBean.DataEntity> listGoods = commonShopBean.getData();
+                        if (listGoods.size() == 0) setActivityStatus(ACTIVITY_STATUS_EMPTY);
                         setAdapter(listGoods);
                     }
                 });
