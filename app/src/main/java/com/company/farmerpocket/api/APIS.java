@@ -20,5 +20,10 @@ public class APIS {
      */
     public static final String SHOP_TYPE = "index.php?";
 
+    /**
+     * 品牌团
+     */
+    public static final String GROUP = "App/Index/pinpaituan.html";
+
 
 }
