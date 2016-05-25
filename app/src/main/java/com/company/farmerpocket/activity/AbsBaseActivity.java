@@ -27,6 +27,16 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
     private static final int NO_LAYOUT = 0;
 
     /**
+     * activity布局样式
+     * 注意：ACTIVITY_STATUS_LOADING状态是把整个页面置为loading布局状态，其它元素不可见
+     */
+    public static final int ACTIVITY_STATUS_SUCCESS = 0;//默认样式（加载默认布局）
+    public static final int ACTIVITY_STATUS_LOADING = 1;//加载中样式（加载加载中布局）
+    public static final int ACTIVITY_STATUS_NO_NET = 2;//无网络样式（加载无网络布局）
+    public static final int ACTIVITY_STATUS_EMPTY = 3;//空页面样式（加载空页面布局）
+    public static final int ACTIVITY_STATUS_ERROR = 4;//错误样式（加载错误布局）
+
+    /**
      * 根布局View
      */
     private View mRootFrameView;
@@ -109,6 +119,30 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      */
     protected int setToolBarRightIv() {
         return 0;
+    }
+
+    /**
+     * 无网络点击事件
+     *
+     * @param view
+     */
+    protected void onNoNetClick(View view) {
+    }
+
+    /**
+     * 空页面点击事件
+     *
+     * @param view
+     */
+    protected void onEmptyClick(View view) {
+    }
+
+    /**
+     * 错误面点击事件
+     *
+     * @param view
+     */
+    protected void onErrorClick(View view) {
     }
 
 
@@ -210,6 +244,116 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         }
         if (!isOpenToolBar()) {
             toolbarLayout.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * 设置activity布局界面状态
+     * 备注：这几种布局状态和正常状态每次仅存在一种
+     */
+    View loadingLayoutView;//加载中布局
+    View noNetLayoutView;//无网络布局
+    View emptyLayoutView;//空页面布局
+    View errorLayoutView;//错误页面布局
+
+    public void setActivityStatus(int activityStatus) {
+        switch (activityStatus) {
+            case ACTIVITY_STATUS_SUCCESS:
+                if (loadingLayoutView != null) mRootFrameLayout.removeView(loadingLayoutView);
+                if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
+                if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
+                if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
+                mSonView.setVisibility(View.VISIBLE);
+                break;
+            case ACTIVITY_STATUS_LOADING:
+                if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
+                if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
+                if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
+                loadingLayoutView = getLayoutInflater().inflate(R.layout.abs_base_loading_layout, null);
+                mRootFrameLayout.addView(loadingLayoutView);
+                mSonView.setVisibility(View.INVISIBLE);
+                break;
+            case ACTIVITY_STATUS_NO_NET:
+                if (loadingLayoutView != null) mRootFrameLayout.removeView(loadingLayoutView);
+                if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
+                if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
+                noNetLayoutView = getLayoutInflater().inflate(R.layout.abs_base_no_net_layout, null);
+                mRootFrameLayout.addView(noNetLayoutView);
+                mSonView.setVisibility(View.INVISIBLE);
+                //无网络布局点击事件
+                setNoNetClickListener(noNetLayoutView);
+                break;
+            case ACTIVITY_STATUS_EMPTY:
+                if (loadingLayoutView != null) mRootFrameLayout.removeView(loadingLayoutView);
+                if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
+                if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
+                emptyLayoutView = getLayoutInflater().inflate(R.layout.abs_base_empty_layout, null);
+                mRootFrameLayout.addView(emptyLayoutView);
+                mSonView.setVisibility(View.INVISIBLE);
+                //空页面布局点击事件
+                setEmptyClickListener(emptyLayoutView);
+                break;
+            case ACTIVITY_STATUS_ERROR:
+                if (loadingLayoutView != null) mRootFrameLayout.removeView(loadingLayoutView);
+                if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
+                if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
+                errorLayoutView = getLayoutInflater().inflate(R.layout.abs_base_error_layout, null);
+                mRootFrameLayout.addView(errorLayoutView);
+                mSonView.setVisibility(View.INVISIBLE);
+                //错误页面布局点击事件
+                setErrorClickListener(errorLayoutView);
+                break;
+        }
+    }
+
+    /**
+     * 无网络布局点击事件
+     *
+     * @param noNetLayoutView
+     */
+    private void setNoNetClickListener(View noNetLayoutView) {
+        if (noNetLayoutView != null) noNetLayoutView.setOnClickListener(new NoNetClickListener());
+    }
+
+    private class NoNetClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (noNetLayoutView != null) mRootFrameLayout.removeView(noNetLayoutView);
+            onNoNetClick(v);
+        }
+    }
+
+    /**
+     * 空页面布局点击事件
+     *
+     * @param emptyLayoutView
+     */
+    private void setEmptyClickListener(View emptyLayoutView) {
+        if (emptyLayoutView != null) emptyLayoutView.setOnClickListener(new EmptyClickListener());
+    }
+
+    private class EmptyClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (emptyLayoutView != null) mRootFrameLayout.removeView(emptyLayoutView);
+            onEmptyClick(v);
+        }
+    }
+
+    /**
+     * 错误页面布局点击事件
+     *
+     * @param errorLayoutView
+     */
+    private void setErrorClickListener(View errorLayoutView) {
+        if (errorLayoutView != null) errorLayoutView.setOnClickListener(new ErrorClickListener());
+    }
+
+    private class ErrorClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            if (errorLayoutView != null) mRootFrameLayout.removeView(errorLayoutView);
+            onErrorClick(v);
         }
     }
 
