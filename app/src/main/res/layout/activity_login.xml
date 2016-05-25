@@ -148,12 +148,14 @@
                 android:src="@mipmap/login_taobao" />
 
             <ImageView
+                android:id="@+id/iv_login_Qq"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@mipmap/login_qq" />
 
             <ImageView
+                android:id="@+id/iv_login_Wb"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

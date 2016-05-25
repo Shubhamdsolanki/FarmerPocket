@@ -13,7 +13,7 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
 
-    <string name="user_farmer_login">天天食惠账号登陆</string>
+    <string name="user_farmer_login">农夫口袋账号登陆</string>
     <string name="user_regist">注册</string>
     <string name="username_login_hint">请输入手机号</string>
     <string name="username_login_pass_hint">请输入密码</string>
