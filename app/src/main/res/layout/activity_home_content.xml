@@ -105,6 +105,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:columnWidth="160dp"
+            android:paddingLeft="@dimen/dimen_4"
+            android:paddingRight="@dimen/dimen_4"
             android:gravity="center"
             android:numColumns="2"
             android:stretchMode="columnWidth" />
