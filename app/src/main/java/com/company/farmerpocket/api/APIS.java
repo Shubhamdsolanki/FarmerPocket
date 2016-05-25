@@ -25,5 +25,10 @@ public class APIS {
      */
     public static final String GROUP = "App/Index/pinpaituan.html";
 
+    /**
+     * 今日推荐
+     */
+    public static final String RECOMMEND = "App/Index/todayrem.html";
+
 
 }

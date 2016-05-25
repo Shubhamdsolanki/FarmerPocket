@@ -67,6 +67,9 @@ public class GroupActivity extends AbsBaseActivity {
         setRefreshLoadMore();
     }
 
+    /**
+     * 设置刷新监听
+     */
     private void setRefreshLoadMore() {
         mPullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
             @Override
