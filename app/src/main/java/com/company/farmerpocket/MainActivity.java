@@ -11,6 +11,7 @@ import android.widget.TabHost;
 import com.company.farmerpocket.activity.CommonGoodsListActivity;
 import com.company.farmerpocket.activity.GroupActivity;
 import com.company.farmerpocket.activity.HomeActivity;
+import com.company.farmerpocket.activity.LoginActivity;
 import com.company.farmerpocket.activity.RecommendActivity;
 import com.company.farmerpocket.activity.ShopActivity;
 import com.company.farmerpocket.activity.UserActivity;
@@ -69,6 +70,16 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
         slidingMenu.setMenu(R.layout.layout_slid_menu);
     }
 
+    @OnClick(R.id.slid_user_login)
+    public void slidUserLogin(){
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    @OnClick(R.id.slid_user_regist)
+    public void slidUserRegist(){
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
     @OnClick(R.id.slid_menu_item_one)
     public void slidMenuClick(){
         closeMenuStartCommonGoodsActivity("茶叶",HomeActivity.typeId[0]);
@@ -124,23 +135,23 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
      * 跳转到商品页面并关闭侧滑菜单
      */
     private void closeMenuStartCommonGoodsActivity(final String title, final String url){
-//        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
+        if (slidingMenu.isMenuShowing()) slidingMenu.toggle();
         if (title == null && url == null) return;
-        if (url == null){
-            CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
-        }else {
-            CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
-        }
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (url == null){
-//                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
-//                }else {
-//                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
-//                }
-//            }
-//        },500);
+//        if (url == null){
+//            CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
+//        }else {
+//            CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
+//        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (url == null){
+                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this, title);
+                }else {
+                    CommonGoodsListActivity.startCommonGoodsListActivity(MainActivity.this,title,url);
+                }
+            }
+        },500);
     }
 
     /**

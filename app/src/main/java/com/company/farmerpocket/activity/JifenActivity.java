@@ -25,7 +25,6 @@ public class JifenActivity extends AbsBaseActivity {
     @Override
     protected void init() {
 
-        setActivityStatus(ACTIVITY_STATUS_LOADING);
     }
 
 }

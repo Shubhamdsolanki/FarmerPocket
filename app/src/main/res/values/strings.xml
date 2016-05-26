@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">农夫口袋</string>
+
+    <string name="app_name">天天食惠</string>
 
     <string name="pull_to_refresh">下拉刷新</string>
     <string name="release_to_refresh">释放立即刷新</string>
@@ -22,6 +23,16 @@
     <string name="dialog_default_title">Hello message!</string>
     <string name="dialog_ok">确定</string>
     <string name="dialog_cancel">取消</string>
-    <string name="LOADING">加载中...</string>
+
+    <string name="help_question">问题：</string>
+    <string name="help_answer">回答：</string>
+    <string name="help_question1">什么是积分，积分有什么用</string>
+    <string name="help_answer1">积分累积到一定数量，可以免费兑换超值商品，1000积分约等于一元，具体可登陆天天食惠官方网站（www.kuigou.net），在“积分商城”查看，感谢您对天天食惠的支持！</string>
+    <string name="help_question2">如何购买</string>
+    <string name="help_answer2">点击查看商品详情，点击“立即购买”按钮，即可登录淘宝并购买。</string>
+    <string name="help_question3">关于签到</string>
+    <string name="help_answer3">每日在天天食惠客户端签到可获得积分，第一次签到领取5积分，连续签到每天增加5积分，连续七天以上签到可获得40积分哦，如果签到中断，又会从5积分开始，遇到签到失败的情况，请尝试重新登录。</string>
+    <string name="help_question4">为什么宝贝价格和在淘宝看到的不一致</string>
+    <string name="help_answer4">部分卖家会使用淘宝提供的优惠方式进行活动，如果您看到价格不一致，那可能就是该宝贝使用以下折扣方式：拍下改价，VIP价格，优惠券价格。是否是拍下改价，VIP价格，优惠券价格宝贝，天天食惠会在宝贝标题描述中进行提示。</string>
 
 </resources>

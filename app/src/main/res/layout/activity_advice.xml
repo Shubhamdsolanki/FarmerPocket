@@ -1,12 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.company.farmerpocket.activity.AdviceActivity">
+    android:background="@color/white"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_14"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:text="感谢有您，期待您的反馈"
+        android:textColor="@color/gray4" />
+
+    <EditText
+        android:id="@+id/met_advice_content"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/advice_et_background"
+        android:gravity="top"
+        android:hint="输入您要反馈的内容"
+        android:ellipsize="end"
+        android:inputType="text"
+        android:padding="@dimen/dimen_10"
+        android:textColor="@color/gray_8f"
+        android:textColorHint="@color/gray_8f"
+        android:textCursorDrawable="@null" />
+
+    <EditText
+        android:id="@+id/met_advice_contact"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginLeft="@dimen/dimen_10"
+        android:layout_marginRight="@dimen/dimen_10"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/advice_et_background"
+        android:hint="输入您的联系方式"
+        android:inputType="number"
+        android:padding="@dimen/dimen_10"
+        android:textColor="@color/gray_8f"
+        android:textColorHint="@color/gray_8f"
+        android:textCursorDrawable="@null" />
+
+    <Button
+        android:id="@+id/btn_advice_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_selector_bg"
+        android:text="提交您的宝贵意见"
+        android:textColor="@color/white" />
+
+</LinearLayout>

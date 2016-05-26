@@ -35,6 +35,14 @@
     <color name="gray_cc">#cccccc</color><!--灰色cc -->
     <color name="gray_8f">#8f8f8f</color><!--灰色8f -->
 
+    <color name="gray0">#F0F0F0</color>
+    <color name="gray1">#cccccc</color>
+    <color name="gray2">#c0c0c0</color>
+    <color name="gray3">#999999</color>
+    <color name="gray4">#808080</color>
+    <color name="gray5">#666666</color>
+    <color name="gray6">#333333</color>
+
     <color name="gray_e0_line">#e0e0e0</color><!--灰色e0 -->
     <color name="black_p50">#7f000000</color>
 

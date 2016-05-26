@@ -96,7 +96,7 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
 
     @Override
     protected String setToolBarTitle() {
-        return "农夫口袋";
+        return "天天食惠";
     }
 
     @Override

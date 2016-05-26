@@ -18,19 +18,27 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iv_user_login"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+        <TextView
+            android:id="@+id/user_login"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10"
+            android:textColor="@color/white"
             android:layout_marginRight="@dimen/dimen_20"
-            android:src="@mipmap/icon_login"/>
+            android:background="@drawable/button_selector_bg"/>
 
-        <ImageView
-            android:id="@+id/iv_user_regist"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
+        <TextView
+            android:id="@+id/user_regist"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="注册"
+            android:gravity="center"
+            android:padding="@dimen/dimen_10"
+            android:textColor="@color/white"
             android:layout_marginLeft="@dimen/dimen_20"
-            android:src="@mipmap/icon_regist"/>
+            android:background="@drawable/button_selector_bg"/>
 
     </LinearLayout>
 

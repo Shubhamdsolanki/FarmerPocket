@@ -4,7 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.company.farmerpocket.R;
 import com.company.farmerpocket.adapter.CommonRecyclerAdapter;
@@ -16,6 +21,7 @@ import com.company.farmerpocket.bean.CommonShopBean;
 import com.company.farmerpocket.component.refreshload.PullToRefreshLayout;
 import com.company.farmerpocket.component.refreshload.pullableview.PullableRecyclerView;
 import com.company.farmerpocket.helper.ToastHelper;
+import com.company.farmerpocket.utils.ImeUtils;
 
 import java.util.List;
 
@@ -32,6 +38,12 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
 
     private final static String PAGE_TITLE = "PAGE_TITLE";
     private final static String SHOP_ID = "SHOP_ID";
+
+    /**
+     * 搜索布局
+     */
+    @Bind(R.id.base_toolbar_search)
+    LinearLayout searchLayout;
 
     /**
      * 下拉刷新上拉加载控件
@@ -72,6 +84,8 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
 
     @Override
     protected void init() {
+        //设置toolbar按钮点击事件
+        setToolBarClickListener();
         //设置页面标题
         String pageTitle = getIntent().getStringExtra(PAGE_TITLE);
         setToolBarTitle(pageTitle);
@@ -85,6 +99,46 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
         requestAPI();
         //设置下拉上拉
         setRefreshLoadMore();
+    }
+
+    /**
+     * 设置toolBar点击事件
+     */
+    private void setToolBarClickListener() {
+        setOnToolBarRightIvClickListener(new ToolBarRightIvClickListener() {
+            @Override
+            public void onToolBarRightIvClick() {
+                setToolBarIsVisibility(View.GONE);
+                searchLayout.setVisibility(View.VISIBLE);
+                TextView tvCancel = (TextView) searchLayout.findViewById(R.id.search_cancel);
+                final EditText editText = (EditText) searchLayout.findViewById(R.id.search_et);
+                ImeUtils.showSoftKeyboard(editText);
+                editText.setImeOptions(EditorInfo.IME_ACTION_DONE);
+                tvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        setToolBarIsVisibility(View.VISIBLE);
+                        searchLayout.setVisibility(View.GONE);
+                        ImeUtils.hideSoftKeyboard(editText);
+                    }
+                });
+                editText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            ImeUtils.hideSoftKeyboard(editText);
+                            ToastHelper.getInstance().showToast(editText.getText().toString());
+                            editText.setText("");
+                            setToolBarIsVisibility(View.VISIBLE);
+                            searchLayout.setVisibility(View.GONE);
+                            return true;
+                        }
+                        return false;
+                    }
+
+                });
+            }
+        });
     }
 
     private void setRefreshLoadMore() {

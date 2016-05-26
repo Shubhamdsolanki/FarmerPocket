@@ -109,12 +109,7 @@ public class UserActivity extends AbsBaseActivity {
      */
     @OnClick(R.id.user_address_layout)
     public void userClickAddress() {
-        ToastHelper.getInstance().showToast("收货地址");
-        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText("干的漂亮")
-                .setContentText("该怎么夸奖你才好呢？")
-                .setConfirmText("不用啦")
-                .show();
+        startActivity(this,ShopAddressActivity.class);
     }
 
     /**
@@ -136,8 +131,16 @@ public class UserActivity extends AbsBaseActivity {
     /**
      * 登录点击事件
      */
-    @OnClick(R.id.iv_user_login)
+    @OnClick(R.id.user_login)
     public void userClickLogin(){startActivity(this, LoginActivity.class);}
+
+    /**
+     * 注册点击事件
+     */
+    @OnClick(R.id.user_regist)
+    public void userClickRegist(){startActivity(this, LoginActivity.class);}
+
+
     private long firstClickTime;
 
     @Override
