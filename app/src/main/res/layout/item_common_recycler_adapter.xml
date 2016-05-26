@@ -5,75 +5,86 @@
     android:orientation="vertical"
     android:padding="@dimen/dimen_10">
 
-
-    <ImageView
-        android:id="@+id/item_home_iv"
-        android:layout_width="160dp"
-        android:layout_height="180dp"
-        android:scaleType="fitXY" />
-
-    <TextView
-        android:id="@+id/item_home_tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_2"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="西湖龙井"
-        android:textColor="@color/black"
-        android:textSize="16sp" />
-
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/common_background_grey"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/item_home_iv"
+            android:layout_width="160dp"
+            android:layout_height="180dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/item_home_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_2"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="西湖龙井"
+            android:layout_marginLeft="@dimen/dimen_4"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/dimen_4"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/item_home_tv_price"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="50.00"
-                android:textColor="@color/red"
-                android:textSize="14sp" />
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_1"
-                android:layout_marginLeft="@dimen/dimen_4">
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/item_home_tv_old_price"
+                    android:id="@+id/item_home_tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="100.00"
-                    android:textColor="@color/gray_8f"
-                    android:textSize="12sp" />
+                    android:text="50.00"
+                    android:layout_marginLeft="@dimen/dimen_4"
+                    android:textColor="@color/red"
+                    android:textSize="14sp" />
 
-                <View
-                    android:layout_width="40dp"
-                    android:layout_height="1dp"
-                    android:layout_centerInParent="true"
-                    android:background="@color/gray_8f" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_4"
+                    android:layout_marginTop="@dimen/dimen_1">
 
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/item_home_tv_old_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="100.00"
+                        android:textColor="@color/gray_8f"
+                        android:textSize="12sp" />
+
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="1dp"
+                        android:layout_centerInParent="true"
+                        android:background="@color/gray_8f" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="立即购买"
+                android:layout_marginRight="@dimen/dimen_4"
+                android:textColor="@color/red" />
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="立即购买"
-            android:textColor="@color/red" />
     </LinearLayout>
-
 
 </LinearLayout>

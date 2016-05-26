@@ -31,6 +31,13 @@ public class WebViewActivity extends AbsBaseActivity {
         setToolBarTitle(title);
         initWebView();
         loadUrl();
+        //设置loading
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+    }
+
+    @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
     }
 
     /**
@@ -98,6 +105,7 @@ public class WebViewActivity extends AbsBaseActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 //这里可以取消loading
+                setActivityStatus(ACTIVITY_STATUS_SUCCESS);
             }
         });
     }

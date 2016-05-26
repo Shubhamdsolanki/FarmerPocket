@@ -9,6 +9,7 @@ import android.view.View;
 import com.company.farmerpocket.R;
 import com.company.farmerpocket.adapter.CommonRecyclerAdapter;
 import com.company.farmerpocket.adapter.baserecycler.BaseQuickAdapter;
+import com.company.farmerpocket.api.APIS;
 import com.company.farmerpocket.api.RetrofitHelper;
 import com.company.farmerpocket.api.interfaces.ApiCommonGoods;
 import com.company.farmerpocket.bean.CommonShopBean;
@@ -65,10 +66,17 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
     }
 
     @Override
+    protected boolean isOpenSwipeBack() {
+        return true;
+    }
+
+    @Override
     protected void init() {
         //设置页面标题
         String pageTitle = getIntent().getStringExtra(PAGE_TITLE);
         setToolBarTitle(pageTitle);
+        //设置loading
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
         //获取传递过来的url
         goodsId = getIntent().getStringExtra(SHOP_ID);
         if (goodsId == null) return;
@@ -105,8 +113,7 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
      * 请求数据
      */
     private void requestAPI() {
-        //服务器接口不规范，需要这样拼
-        String url = "App/Index/cate/classId/";
+        String url = APIS.HOME_TYPE;
         ApiCommonGoods commonGoods = RetrofitHelper.getRetrofit().create(ApiCommonGoods.class);
         Observable<CommonShopBean> observable = commonGoods.getCommonGoodsData(url+goodsId);
         observable.subscribeOn(Schedulers.io())
@@ -129,8 +136,11 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
 
                     @Override
                     public void onNext(CommonShopBean commonShopBean) {
+                        //设置activity状态为success
+                        if (getActivityStatus() != ACTIVITY_STATUS_SUCCESS)  setActivityStatus(ACTIVITY_STATUS_SUCCESS);
                         //获取商品信息
                         List<CommonShopBean.DataEntity> listGoods = commonShopBean.getData();
+                        if (listGoods.size() == 0) setActivityStatus(ACTIVITY_STATUS_EMPTY);
                         setAdapter(listGoods);
                     }
                 });
@@ -181,4 +191,11 @@ public class CommonGoodsListActivity extends AbsBaseActivity {
         context.startActivity(intent);
     }
 
+    @Override
+    protected void onEmptyClick(View view) {
+        super.onEmptyClick(view);
+        setActivityStatus(ACTIVITY_STATUS_LOADING);
+        //重新请求
+        requestAPI();
+    }
 }

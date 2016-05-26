@@ -13,7 +13,7 @@ import rx.Observable;
  */
 public interface ApiCommonGoods {
 
-    @GET(APIS.SHOP_TYPE)
-    Observable<CommonShopBean> getCommonGoodsData(@Query("s") String id);
+    @GET(APIS.INDEX)
+    Observable<CommonShopBean> getCommonGoodsData(@Query("s") String url);
 
 }

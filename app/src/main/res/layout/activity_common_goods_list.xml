@@ -11,7 +11,6 @@
         android:id="@+id/refresh_common_recycler_content_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/dimen_10"
         android:background="@color/white" />
 
     <include layout="@layout/pull_to_refresh_load_more" />
