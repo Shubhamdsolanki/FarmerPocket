@@ -41,6 +41,11 @@ import rx.schedulers.Schedulers;
 public class HomeActivity extends AbsBaseActivity implements PullableScrollViewHome.OnScrollListener{
 
     /**
+     * 搜索布局
+     */
+    @Bind(R.id.base_toolbar_search)
+    LinearLayout searchLayout;
+    /**
      * 首页下拉刷新控件
      */
     @Bind(R.id.home_refresh_scroll_view)
@@ -54,11 +59,6 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
      * 首页banner
      */
     private ConvenientBanner mBanner;
-
-    /**
-     * 搜索布局
-     */
-    private LinearLayout searchLayout;
 
     /**
      * 是否是首次进入请求数据
@@ -143,8 +143,9 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
                 tvCancel.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        searchLayout.setVisibility(View.GONE);
                         setToolBarIsVisibility(View.VISIBLE);
+                        searchLayout.setVisibility(View.GONE);
+                        pullableScrollViewHome.smoothScrollTo(0,scrollY);
                         ImeUtils.hideSoftKeyboard(editText);
                     }
                 });
@@ -155,6 +156,9 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
                             ImeUtils.hideSoftKeyboard(editText);
                             ToastHelper.getInstance().showToast(editText.getText().toString());
                             editText.setText("");
+                            setToolBarIsVisibility(View.VISIBLE);
+                            searchLayout.setVisibility(View.GONE);
+                            pullableScrollViewHome.smoothScrollTo(0,scrollY);
                             return true;
                         }
                         return false;
@@ -270,8 +274,6 @@ public class HomeActivity extends AbsBaseActivity implements PullableScrollViewH
         mGridView = (GridView) findViewById(R.id.grid_view);
         //滑动监听
         pullableScrollViewHome.setOnScrollListener(this);
-        //搜索布局
-        searchLayout = (LinearLayout) findViewById(R.id.base_toolbar_search);
     }
 
     /**
