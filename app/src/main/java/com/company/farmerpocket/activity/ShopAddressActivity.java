@@ -3,18 +3,18 @@ package com.company.farmerpocket.activity;
 import com.company.farmerpocket.R;
 
 /**
- * 消息中心
+ * 收货地址
  */
-public class MessageActivity extends AbsBaseActivity {
+public class ShopAddressActivity extends AbsBaseActivity {
 
     @Override
     protected int getLayoutID() {
-        return R.layout.activity_message;
+        return R.layout.activity_shop_address;
     }
 
     @Override
     protected String setToolBarTitle() {
-        return "消息中心";
+        return "收货地址";
     }
 
     @Override
