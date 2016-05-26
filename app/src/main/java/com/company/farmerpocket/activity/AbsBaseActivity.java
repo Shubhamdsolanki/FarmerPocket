@@ -87,6 +87,14 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      */
     protected abstract void init();
 
+    /**
+     * 获取根布局
+     *
+     * @return
+     */
+    protected FrameLayout getRootLayout() {
+        return mRootFrameLayout;
+    }
 
     /**
      * 是否打开ToolBar
@@ -133,6 +141,15 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
      */
     protected int setToolBarLeftIv() {
         return 0;
+    }
+
+    /**
+     * 设置toolBar是否可见
+     *
+     * @return
+     */
+    public void setToolBarIsVisibility(int visibility) {
+    if (toolbarLayout != null) toolbarLayout.setVisibility(visibility);
     }
 
     /**
@@ -236,14 +253,19 @@ public abstract class AbsBaseActivity extends AppCompatActivity {
         ImageView rightImage = (ImageView) findViewById(R.id.iv_toolbar_right);
         if (backImage != null)
             if (setToolBarLeftIv() != 0) {
-                //默认是返回，不为0则为自定义
-                backImage.setImageResource(setToolBarLeftIv());
-                backImage.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (leftIvClickListener != null) leftIvClickListener.onToolBarLeftIvClick();
-                    }
-                });
+                //默认图片是返回，不为0则为自定义显示的图片
+                if (setToolBarLeftIv() == -1){
+                    //如果为-1则不显示左侧图片
+                    backImage.setVisibility(View.GONE);
+                }else {
+                    backImage.setImageResource(setToolBarLeftIv());
+                    backImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (leftIvClickListener != null) leftIvClickListener.onToolBarLeftIvClick();
+                        }
+                    });
+                }
             } else {
                 //默认点击事件是返回
                 backImage.setOnClickListener(new View.OnClickListener() {

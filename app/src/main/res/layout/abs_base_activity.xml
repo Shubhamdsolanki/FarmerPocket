@@ -6,6 +6,8 @@
 
     <include layout="@layout/layout_base_toolbar"/>
 
+    <include layout="@layout/layout_base_toolbar_search"/>
+
     <FrameLayout
         android:id="@+id/abs_base_frame_layout"
         android:layout_width="match_parent"

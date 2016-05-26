@@ -52,8 +52,13 @@ public class ShopActivity extends AbsBaseActivity {
     }
 
     @Override
-    protected boolean isOpenToolBar() {
-        return false;
+    protected int setToolBarLeftIv() {
+        return -1;
+    }
+
+    @Override
+    protected String setToolBarTitle() {
+        return "积分商城";
     }
 
     @Override
