@@ -11,6 +11,7 @@ import android.widget.TabHost;
 import com.company.farmerpocket.activity.CommonGoodsListActivity;
 import com.company.farmerpocket.activity.GroupActivity;
 import com.company.farmerpocket.activity.HomeActivity;
+import com.company.farmerpocket.activity.LoginActivity;
 import com.company.farmerpocket.activity.RecommendActivity;
 import com.company.farmerpocket.activity.ShopActivity;
 import com.company.farmerpocket.activity.UserActivity;
@@ -67,6 +68,16 @@ public class MainActivity extends TabActivity implements RadioGroup.OnCheckedCha
         slidingMenu.setFadeDegree(0.35f);
         slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         slidingMenu.setMenu(R.layout.layout_slid_menu);
+    }
+
+    @OnClick(R.id.slid_user_login)
+    public void slidUserLogin(){
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
+    @OnClick(R.id.slid_user_regist)
+    public void slidUserRegist(){
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     @OnClick(R.id.slid_menu_item_one)

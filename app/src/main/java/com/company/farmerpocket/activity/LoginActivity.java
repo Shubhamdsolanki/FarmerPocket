@@ -14,6 +14,11 @@ public class LoginActivity extends AbsBaseActivity{
     }
 
     @Override
+    protected boolean isOpenToolBar() {
+        return false;
+    }
+
+    @Override
     protected void init() {
 
     }

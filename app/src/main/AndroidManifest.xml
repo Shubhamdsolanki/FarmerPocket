@@ -35,6 +35,7 @@
         <activity android:name=".activity.HelpActivity" />
         <activity android:name=".activity.MessageActivity" />
         <activity android:name=".activity.JifenActivity"></activity>
+        <activity android:name=".activity.LoginActivity"></activity>
     </application>
 
 </manifest>

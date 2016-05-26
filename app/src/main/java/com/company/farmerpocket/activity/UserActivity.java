@@ -93,8 +93,16 @@ public class UserActivity extends AbsBaseActivity {
     /**
      * 登录点击事件
      */
-    @OnClick(R.id.iv_user_login)
+    @OnClick(R.id.user_login)
     public void userClickLogin(){startActivity(this, LoginActivity.class);}
+
+    /**
+     * 注册点击事件
+     */
+    @OnClick(R.id.user_regist)
+    public void userClickRegist(){startActivity(this, LoginActivity.class);}
+
+
     private long firstClickTime;
 
     @Override
