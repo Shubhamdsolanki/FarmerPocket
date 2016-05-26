@@ -68,13 +68,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:textCursorDrawable="@null"
                     android:gravity="center_vertical"
                     android:hint="@string/username_login_hint"
-                    android:paddingLeft="@dimen/dimen_10"
                     android:inputType="phone"
-                    android:textColorHint="@color/gray_e0_line"
+                    android:paddingLeft="@dimen/dimen_10"
                     android:textColor="@color/gray_8f"
+                    android:textColorHint="@color/gray_e0_line"
+                    android:textCursorDrawable="@null"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -100,13 +100,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:textCursorDrawable="@null"
                     android:gravity="center_vertical"
                     android:hint="@string/username_login_pass_hint"
-                    android:paddingLeft="@dimen/dimen_10"
-                    android:textColorHint="@color/gray_e0_line"
-                    android:textColor="@color/gray_8f"
                     android:inputType="textPassword"
+                    android:paddingLeft="@dimen/dimen_10"
+                    android:textColor="@color/gray_8f"
+                    android:textColorHint="@color/gray_e0_line"
+                    android:textCursorDrawable="@null"
                     android:textSize="18sp" />
 
                 <ImageView
@@ -144,8 +144,10 @@
             android:layout_below="@+id/view_login"
             android:background="@drawable/login_linearlayout_top"
             android:orientation="horizontal"
-            android:paddingBottom="@dimen/dimen_6"
-            android:paddingTop="@dimen/dimen_20">
+            android:paddingBottom="@dimen/dimen_10"
+            android:paddingLeft="@dimen/dimen_10"
+            android:paddingRight="@dimen/dimen_10"
+            android:paddingTop="@dimen/dimen_40">
 
             <ImageView
                 android:id="@+id/iv_login_taobao"
@@ -166,10 +168,80 @@
                 android:layout_weight="1"
                 android:src="@mipmap/login_wb" />
         </LinearLayout>
+
+        <!-- 大别针FrameLayout-->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_top"
+            android:layout_marginTop="-18dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- 大别针1-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/login_gray_circle" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:background="@color/gray_cc" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/login_gray_circle" />
+                </LinearLayout>
+
+                <!-- 大别针2-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/login_gray_circle" />
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:background="@color/gray_cc" />
+
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/login_gray_circle" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_0"
         android:layout_weight="1" />
+
 </LinearLayout>
