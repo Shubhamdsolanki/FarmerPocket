@@ -3,7 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
-
+//    aaptOptions.cruncherEnabled = false
+//    aaptOptions.useNewCruncher = false
     defaultConfig {
         applicationId "com.company.farmerpocket"
         minSdkVersion 16
@@ -32,8 +33,11 @@ dependencies {
     compile files('libs/nineoldandroids-2.4.0.jar')
     compile files('libs/mta-sdk-1.6.2.jar')
     compile files('libs/open_sdk_r5509.jar')
+    compile files('libs/umeng_social_sdk.jar')
+    compile files('libs/weiboSDKCore_3.1.4.jar')
     //rxJava and retrofit
     compile 'io.reactivex:rxjava:1.1.0'
+//    compile project(':weiboSDK')
     compile 'io.reactivex:rxandroid:1.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'

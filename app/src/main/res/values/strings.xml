@@ -35,4 +35,22 @@
     <string name="help_question4">为什么宝贝价格和在淘宝看到的不一致</string>
     <string name="help_answer4">部分卖家会使用淘宝提供的优惠方式进行活动，如果您看到价格不一致，那可能就是该宝贝使用以下折扣方式：拍下改价，VIP价格，优惠券价格。是否是拍下改价，VIP价格，优惠券价格宝贝，天天食惠会在宝贝标题描述中进行提示。</string>
 
+    <string name="weibosdk_demo_toast_auth_success">授权成功</string>
+
+    <string name="weibosdk_demo_toast_auth_failed">授权失败</string>
+
+    <string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
+
+    <string name="weibosdk_demo_toast_obtain_code_success">获取 Code 成功</string>
+
+    <string name="weibosdk_demo_toast_obtain_code_failed">获取 Code 失败</string>
+
+    <string name="weibosdk_demo_toast_obtain_token_success">获取 Token 成功</string>
+
+    <string name="weibosdk_demo_toast_obtain_token_failed">获取 Token 失败</string>
+
+    <string name="weibosdk_demo_token_to_string_format_1">Token：%1$s \n有效期：%2$s</string>
+
+    <string name="weibosdk_demo_token_has_existed">Token 仍在有效期内，无需再次登录。</string>
+
 </resources>

@@ -97,6 +97,13 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false" >
+        </activity>
+
         <activity android:name=".activity.JifenActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.ShopAddressActivity"></activity>
